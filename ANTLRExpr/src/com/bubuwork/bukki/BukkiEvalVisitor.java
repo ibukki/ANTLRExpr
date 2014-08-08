@@ -3,6 +3,7 @@ package com.bubuwork.bukki;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.bubuwork.bukki.BukkiParser.AddsubContext;
 import com.bubuwork.bukki.BukkiParser.AssignContext;
 import com.bubuwork.bukki.BukkiParser.BoolContext;
 import com.bubuwork.bukki.BukkiParser.CallfuncContext;
@@ -56,8 +57,13 @@ public class BukkiEvalVisitor extends BukkiBaseVisitor<Object>{
 	 */
 	@Override
 	public Object visitLt(LtContext ctx) {
-		// TODO Auto-generated method stub
-		return super.visitLt(ctx);
+		Long value1 = (Long) visit(ctx.expr(0));
+		Long value2 = (Long) visit(ctx.expr(1));
+		if(value1 < value2){
+			return true;
+		}else{
+			return false;
+		}
 	}
 
 	/* (non-Javadoc)
@@ -91,8 +97,10 @@ public class BukkiEvalVisitor extends BukkiBaseVisitor<Object>{
 	 */
 	@Override
 	public Object visitId(IdContext ctx) {
-		// TODO Auto-generated method stub
-		return super.visitId(ctx);
+		String id = ctx.ID().getText();
+		if (memory.containsKey(id))
+			return memory.get(id);
+		return null;
 	}
 
 	/* (non-Javadoc)
@@ -109,8 +117,45 @@ public class BukkiEvalVisitor extends BukkiBaseVisitor<Object>{
 	 */
 	@Override
 	public Object visitMuldiv(MuldivContext ctx) {
-		// TODO Auto-generated method stub
-		return super.visitMuldiv(ctx);
+		Object left = visit(ctx.expr(0)); // get value of left subexpression
+		Object right = visit(ctx.expr(1)); // get value of right subexpression
+		if(left instanceof Long && right instanceof Long){
+			if ( ctx.op.getType() == BukkiParser.MUL ){
+				return (Long)left * (Long)right;
+			}else{
+				 return (Long)left / (Long)right;
+			}
+		}else if(left instanceof Double && right instanceof Double){
+			if ( ctx.op.getType() == BukkiParser.MUL ){
+				return (Double)left * (Double)right;
+			}else{
+				 return (Double)left / (Double)right;
+			}
+		}
+		return null; // must be DIV
+	}
+
+	/* (non-Javadoc)
+	 * @see com.bubuwork.bukki.BukkiBaseVisitor#visitAddsub(com.bubuwork.bukki.BukkiParser.AddsubContext)
+	 */
+	@Override
+	public Object visitAddsub(AddsubContext ctx) {
+		Object left = visit(ctx.expr(0)); // get value of left subexpression
+		Object right = visit(ctx.expr(1)); // get value of right subexpression
+		if(left instanceof Long && right instanceof Long){
+			if ( ctx.op.getType() == BukkiParser.ADD ){
+				return (Long)left + (Long)right;
+			}else{
+				 return (Long)left - (Long)right;
+			}
+		}else if(left instanceof Double && right instanceof Double){
+			if ( ctx.op.getType() == BukkiParser.ADD ){
+				return (Double)left + (Double)right;
+			}else{
+				 return (Double)left - (Double)right;
+			}
+		}
+		return null; // must be DIV
 	}
 
 	/* (non-Javadoc)
@@ -216,8 +261,13 @@ public class BukkiEvalVisitor extends BukkiBaseVisitor<Object>{
 	 */
 	@Override
 	public Object visitGt(GtContext ctx) {
-		// TODO Auto-generated method stub
-		return super.visitGt(ctx);
+		Long value1 = (Long) visit(ctx.expr(0));
+		Long value2 = (Long) visit(ctx.expr(1));
+		if(value1 > value2){
+			return true;
+		}else{
+			return false;
+		}
 	}
 
 	/* (non-Javadoc)

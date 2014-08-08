@@ -24,7 +24,6 @@ public class Runner {
 			CommonTokenStream tokens = new CommonTokenStream(lexer);
 			BukkiParser parser = new BukkiParser(tokens);
 			ParseTree tree = parser.prog();
-			System.out.println(tree.toStringTree(parser));
 			BukkiEvalVisitor eval = new BukkiEvalVisitor();
 			eval.visit(tree);
 			
