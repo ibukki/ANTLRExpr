@@ -1,9 +1,0 @@
-a = 100
-print a
-call func_readconf <a, 5, 3, d>
-b = 5.5
-print b
-c = a
-print c
-e = a + b * 2 + 3 / 2
-print e
