@@ -48,8 +48,13 @@ public class BukkiEvalVisitor extends BukkiBaseVisitor<Object>{
 	 */
 	@Override
 	public Object visitGe(GeContext ctx) {
-		// TODO Auto-generated method stub
-		return super.visitGe(ctx);
+		Long value1 = (Long) visit(ctx.expr(0));
+		Long value2 = (Long) visit(ctx.expr(1));
+		if(value1 >= value2){
+			return true;
+		}else{
+			return false;
+		}
 	}
 
 	/* (non-Javadoc)
