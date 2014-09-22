@@ -5,6 +5,6 @@ package com.bubuwork.bukki.function;
  * @author HL
  *
  */
-public interface FuctionExecuter {
+public interface FunctionExecutor {
 	public void execute();
 }
