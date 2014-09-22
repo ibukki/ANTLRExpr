@@ -1,9 +1,8 @@
-// Generated from Bukki.g4 by ANTLR 4.4
 package com.bubuwork.bukki;
+
+// Generated from Bukki.g4 by ANTLR 4.4
 import org.antlr.v4.runtime.misc.NotNull;
 import org.antlr.v4.runtime.tree.AbstractParseTreeVisitor;
-
-import com.bubuwork.bukki.exception.FunctionNotImplException;
 
 /**
  * This class provides an empty implementation of {@link BukkiVisitor},

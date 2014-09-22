@@ -27,6 +27,7 @@ import com.bubuwork.bukki.BukkiParser.NotContext;
 import com.bubuwork.bukki.BukkiParser.ParamContext;
 import com.bubuwork.bukki.BukkiParser.ParensContext;
 import com.bubuwork.bukki.BukkiParser.ProgContext;
+import com.bubuwork.bukki.BukkiParser.StatContext;
 import com.bubuwork.bukki.function.FunctionExecutor;
 import com.bubuwork.bukki.function.FunctionExecutorFactory;
 import com.bubuwork.bukki.util.CalculationMemory;
@@ -190,8 +191,15 @@ public class BukkiEvalVisitor extends BukkiBaseVisitor<Object>{
 	 */
 	@Override
 	public Object visitIfstat(IfstatContext ctx) {
-		// TODO Auto-generated method stub
-		return super.visitIfstat(ctx);
+		boolean ifPass = (Boolean) visit(ctx.expr());
+		if(ifPass){
+			List<StatContext> stats = ctx.stat();
+			for (StatContext stat : stats) {
+				System.out.println(stat.getText());
+			}
+			return super.visitIfstat(ctx);
+		}
+		return null;
 	}
 
 	/* (non-Javadoc)
@@ -243,8 +251,7 @@ public class BukkiEvalVisitor extends BukkiBaseVisitor<Object>{
 	 */
 	@Override
 	public Object visitParens(ParensContext ctx) {
-		// TODO Auto-generated method stub
-		return super.visitParens(ctx);
+		return this.visit(ctx.expr());
 	}
 
 	/* (non-Javadoc)

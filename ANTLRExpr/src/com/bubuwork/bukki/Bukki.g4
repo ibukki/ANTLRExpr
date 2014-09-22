@@ -15,7 +15,7 @@ stat: block            #codeblock
     | condstat ';'     #cond
     ;
     
-ifstat: 'if' expr ('else' stat)?
+ifstat: 'if' expr stat ('else' stat)?
       ;
 
 condstat: expr '?' expr ':' expr 
