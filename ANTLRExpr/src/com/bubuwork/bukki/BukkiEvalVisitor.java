@@ -26,10 +26,9 @@ import com.bubuwork.bukki.BukkiParser.MuldivContext;
 import com.bubuwork.bukki.BukkiParser.NotContext;
 import com.bubuwork.bukki.BukkiParser.ParensContext;
 import com.bubuwork.bukki.BukkiParser.ProgContext;
+import com.bubuwork.bukki.util.CalculationMemory;
 
 public class BukkiEvalVisitor extends BukkiBaseVisitor<Object>{
-	
-	private Map<String, Object> memory = new HashMap<String, Object>();
 	
 	
 	/* (non-Javadoc)
@@ -39,7 +38,7 @@ public class BukkiEvalVisitor extends BukkiBaseVisitor<Object>{
 	public Object visitAssign(AssignContext ctx) {
 		String id = ctx.ID().getText(); // id is left-hand side of '='
 		Object value = visit(ctx.expr()); // compute value of expression on right
-		memory.put(id, value); // store it in our memory
+		CalculationMemory.addVariable(id, value); // store it in our memory
 		return null;
 	}
 
@@ -103,8 +102,8 @@ public class BukkiEvalVisitor extends BukkiBaseVisitor<Object>{
 	@Override
 	public Object visitId(IdContext ctx) {
 		String id = ctx.ID().getText();
-		if (memory.containsKey(id))
-			return memory.get(id);
+		if (CalculationMemory.containsKey(id))
+			return CalculationMemory.getVariable(id);
 		return null;
 	}
 
@@ -169,6 +168,11 @@ public class BukkiEvalVisitor extends BukkiBaseVisitor<Object>{
 	@Override
 	public Object visitFunc(FuncContext ctx) {
 		// TODO Auto-generated method stub
+		
+		System.out.println(ctx.params().param());
+		
+		System.out.println(ctx.fname().getText());
+		
 		return super.visitFunc(ctx);
 	}
 
@@ -281,20 +285,6 @@ public class BukkiEvalVisitor extends BukkiBaseVisitor<Object>{
 	@Override
 	public Object visitBool(BoolContext ctx) {
 		return ctx.BOOLEAN().getText();
-	}
-
-	/**
-	 * @return the memory
-	 */
-	public Map<String, Object> getMemory() {
-		return memory;
-	}
-
-	/**
-	 * @param memory the memory to set
-	 */
-	public void setMemory(Map<String, Object> memory) {
-		this.memory = memory;
 	}
 
 }

@@ -13,6 +13,7 @@ import org.antlr.v4.runtime.tree.ParseTree;
 import com.bubuwork.bukki.BukkiEvalVisitor;
 import com.bubuwork.bukki.BukkiLexer;
 import com.bubuwork.bukki.BukkiParser;
+import com.bubuwork.bukki.util.CalculationMemory;
 
 public class Runner {
 	public static void main(String[] args) throws Exception {
@@ -31,7 +32,7 @@ public class Runner {
 			BukkiEvalVisitor eval = new BukkiEvalVisitor();
 			eval.visit(tree);
 			
-			Map<String, Object> memory = eval.getMemory();
+			Map<String, Object> memory = CalculationMemory.getMemoryMap();
 			for (Iterator iterator = memory.keySet().iterator(); iterator.hasNext();) {
 				String key = (String) iterator.next();
 				System.out.println("key " + key + " value: " + memory.get(key));
