@@ -8,13 +8,18 @@ public class CalculationMemory {
 	/**
 	 * calculation memory
 	 */
-	private static Map<String, Object> memoryMap = new HashMap<String, Object>();
+	private Map<String, Object> memory;
+	
+	public CalculationMemory(){
+		this.memory = new HashMap<String, Object>();
+	}
+	
 	
 	/**
-	 * @return the memoryMap
+	 * @return the memory
 	 */
-	public static Map<String, Object> getMemoryMap() {
-		return memoryMap;
+	public Map<String, Object> memory() {
+		return memory;
 	}
 
 
@@ -23,8 +28,8 @@ public class CalculationMemory {
 	 * @param key
 	 * @param value
 	 */
-	public static void addVariable(String key, Object value){
-		memoryMap.put(key, value);
+	public void addVariable(String key, Object value){
+		memory.put(key, value);
 	}
 	
 	
@@ -33,8 +38,8 @@ public class CalculationMemory {
 	 * @param key
 	 * @return
 	 */
-	public static Object getVariable(String key){
-		return memoryMap.get(key);
+	public Object getVariable(String key){
+		return memory.get(key);
 	}
 	
 	/**
@@ -42,8 +47,8 @@ public class CalculationMemory {
 	 * @param key
 	 * @return
 	 */
-	public static boolean containsKey(String key){
-		return memoryMap.containsKey(key);
+	public boolean containsKey(String key){
+		return memory.containsKey(key);
 	}
 	
 }

@@ -29,10 +29,10 @@ public class Runner {
 			CommonTokenStream tokens = new CommonTokenStream(lexer);
 			BukkiParser parser = new BukkiParser(tokens);
 			ParseTree tree = parser.prog();
-			BukkiEvalVisitor eval = new BukkiEvalVisitor();
+			BukkiEvalVisitor eval = new BukkiEvalVisitor(new CalculationMemory());
 			eval.visit(tree);
 			
-			Map<String, Object> memory = CalculationMemory.getMemoryMap();
+			Map<String, Object> memory = eval.getMemory().memory();
 			for (Iterator iterator = memory.keySet().iterator(); iterator.hasNext();) {
 				String key = (String) iterator.next();
 				System.out.println("key " + key + " value: " + memory.get(key));

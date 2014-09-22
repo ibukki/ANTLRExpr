@@ -1,7 +1,7 @@
 a = 100 ;
 b = 5 ;
 c = 6 ;
-readconf(a, b, c, d) ;
+add(a, b, c, d) ;
 if ( a > b){
 	if( b < c){
 		e = a * b ;
