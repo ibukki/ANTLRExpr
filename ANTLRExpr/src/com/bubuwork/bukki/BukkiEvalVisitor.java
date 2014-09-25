@@ -192,12 +192,13 @@ public class BukkiEvalVisitor extends BukkiBaseVisitor<Object>{
 	@Override
 	public Object visitIfstat(IfstatContext ctx) {
 		boolean ifPass = (Boolean) visit(ctx.expr());
+		List<StatContext> stats = ctx.stat();
 		if(ifPass){
-			List<StatContext> stats = ctx.stat();
-			for (StatContext stat : stats) {
-				System.out.println(stat.getText());
+			visit(stats.get(0));
+		}else{
+			if(stats.size() > 1){
+				visit(stats.get(1));
 			}
-			return super.visitIfstat(ctx);
 		}
 		return null;
 	}
