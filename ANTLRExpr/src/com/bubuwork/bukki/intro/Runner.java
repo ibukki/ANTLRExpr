@@ -18,7 +18,7 @@ import com.bubuwork.bukki.util.CalculationMemory;
 public class Runner {
 	public static void main(String[] args) throws Exception {
 		
-		String inputFile = "src/com/bubuwork/bukki/r.expr";
+		String inputFile = "src/com/bubuwork/bukki/intro/r.expr";
 		if(args.length > 0) inputFile = args[0];
 		
 		InputStream is = null;
