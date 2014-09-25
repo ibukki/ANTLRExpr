@@ -66,14 +66,6 @@ public class BukkiParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_prog; }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof BukkiListener ) ((BukkiListener)listener).enterProg(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof BukkiListener ) ((BukkiListener)listener).exitProg(this);
-		}
-		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof BukkiVisitor ) return ((BukkiVisitor<? extends T>)visitor).visitProg(this);
 			else return visitor.visitChildren(this);
@@ -124,14 +116,6 @@ public class BukkiParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_block; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof BukkiListener ) ((BukkiListener)listener).enterBlock(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof BukkiListener ) ((BukkiListener)listener).exitBlock(this);
-		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof BukkiVisitor ) return ((BukkiVisitor<? extends T>)visitor).visitBlock(this);
@@ -192,14 +176,6 @@ public class BukkiParser extends Parser {
 		public TerminalNode ID() { return getToken(BukkiParser.ID, 0); }
 		public AssignContext(StatContext ctx) { copyFrom(ctx); }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof BukkiListener ) ((BukkiListener)listener).enterAssign(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof BukkiListener ) ((BukkiListener)listener).exitAssign(this);
-		}
-		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof BukkiVisitor ) return ((BukkiVisitor<? extends T>)visitor).visitAssign(this);
 			else return visitor.visitChildren(this);
@@ -210,14 +186,6 @@ public class BukkiParser extends Parser {
 			return getRuleContext(IfstatContext.class,0);
 		}
 		public IfcondContext(StatContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof BukkiListener ) ((BukkiListener)listener).enterIfcond(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof BukkiListener ) ((BukkiListener)listener).exitIfcond(this);
-		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof BukkiVisitor ) return ((BukkiVisitor<? extends T>)visitor).visitIfcond(this);
@@ -230,14 +198,6 @@ public class BukkiParser extends Parser {
 		}
 		public CallfuncContext(StatContext ctx) { copyFrom(ctx); }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof BukkiListener ) ((BukkiListener)listener).enterCallfunc(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof BukkiListener ) ((BukkiListener)listener).exitCallfunc(this);
-		}
-		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof BukkiVisitor ) return ((BukkiVisitor<? extends T>)visitor).visitCallfunc(this);
 			else return visitor.visitChildren(this);
@@ -249,14 +209,6 @@ public class BukkiParser extends Parser {
 		}
 		public CodeblockContext(StatContext ctx) { copyFrom(ctx); }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof BukkiListener ) ((BukkiListener)listener).enterCodeblock(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof BukkiListener ) ((BukkiListener)listener).exitCodeblock(this);
-		}
-		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof BukkiVisitor ) return ((BukkiVisitor<? extends T>)visitor).visitCodeblock(this);
 			else return visitor.visitChildren(this);
@@ -267,14 +219,6 @@ public class BukkiParser extends Parser {
 			return getRuleContext(CondstatContext.class,0);
 		}
 		public CondContext(StatContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof BukkiListener ) ((BukkiListener)listener).enterCond(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof BukkiListener ) ((BukkiListener)listener).exitCond(this);
-		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof BukkiVisitor ) return ((BukkiVisitor<? extends T>)visitor).visitCond(this);
@@ -356,14 +300,6 @@ public class BukkiParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_ifstat; }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof BukkiListener ) ((BukkiListener)listener).enterIfstat(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof BukkiListener ) ((BukkiListener)listener).exitIfstat(this);
-		}
-		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof BukkiVisitor ) return ((BukkiVisitor<? extends T>)visitor).visitIfstat(this);
 			else return visitor.visitChildren(this);
@@ -413,14 +349,6 @@ public class BukkiParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_condstat; }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof BukkiListener ) ((BukkiListener)listener).enterCondstat(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof BukkiListener ) ((BukkiListener)listener).exitCondstat(this);
-		}
-		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof BukkiVisitor ) return ((BukkiVisitor<? extends T>)visitor).visitCondstat(this);
 			else return visitor.visitChildren(this);
@@ -455,6 +383,7 @@ public class BukkiParser extends Parser {
 		public ParamsContext params() {
 			return getRuleContext(ParamsContext.class,0);
 		}
+		public TerminalNode ID() { return getToken(BukkiParser.ID, 0); }
 		public FnameContext fname() {
 			return getRuleContext(FnameContext.class,0);
 		}
@@ -462,14 +391,6 @@ public class BukkiParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_func; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof BukkiListener ) ((BukkiListener)listener).enterFunc(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof BukkiListener ) ((BukkiListener)listener).exitFunc(this);
-		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof BukkiVisitor ) return ((BukkiVisitor<? extends T>)visitor).visitFunc(this);
@@ -483,10 +404,19 @@ public class BukkiParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(62); fname();
-			setState(63); match(T__14);
-			setState(64); params();
-			setState(65); match(T__15);
+			setState(64);
+			switch ( getInterpreter().adaptivePredict(_input,4,_ctx) ) {
+			case 1:
+				{
+				setState(62); match(ID);
+				setState(63); match(T__10);
+				}
+				break;
+			}
+			setState(66); fname();
+			setState(67); match(T__14);
+			setState(68); params();
+			setState(69); match(T__15);
 			}
 		}
 		catch (RecognitionException re) {
@@ -507,14 +437,6 @@ public class BukkiParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_fname; }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof BukkiListener ) ((BukkiListener)listener).enterFname(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof BukkiListener ) ((BukkiListener)listener).exitFname(this);
-		}
-		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof BukkiVisitor ) return ((BukkiVisitor<? extends T>)visitor).visitFname(this);
 			else return visitor.visitChildren(this);
@@ -527,7 +449,7 @@ public class BukkiParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(67); match(ID);
+			setState(71); match(ID);
 			}
 		}
 		catch (RecognitionException re) {
@@ -553,14 +475,6 @@ public class BukkiParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_params; }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof BukkiListener ) ((BukkiListener)listener).enterParams(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof BukkiListener ) ((BukkiListener)listener).exitParams(this);
-		}
-		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof BukkiVisitor ) return ((BukkiVisitor<? extends T>)visitor).visitParams(this);
 			else return visitor.visitChildren(this);
@@ -574,18 +488,18 @@ public class BukkiParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(69); param();
-			setState(74);
+			setState(73); param();
+			setState(78);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while (_la==COMMA) {
 				{
 				{
-				setState(70); match(COMMA);
-				setState(71); param();
+				setState(74); match(COMMA);
+				setState(75); param();
 				}
 				}
-				setState(76);
+				setState(80);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
@@ -619,14 +533,6 @@ public class BukkiParser extends Parser {
 		}
 		public NotContext(ExprContext ctx) { copyFrom(ctx); }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof BukkiListener ) ((BukkiListener)listener).enterNot(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof BukkiListener ) ((BukkiListener)listener).exitNot(this);
-		}
-		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof BukkiVisitor ) return ((BukkiVisitor<? extends T>)visitor).visitNot(this);
 			else return visitor.visitChildren(this);
@@ -642,14 +548,6 @@ public class BukkiParser extends Parser {
 		}
 		public AddsubContext(ExprContext ctx) { copyFrom(ctx); }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof BukkiListener ) ((BukkiListener)listener).enterAddsub(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof BukkiListener ) ((BukkiListener)listener).exitAddsub(this);
-		}
-		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof BukkiVisitor ) return ((BukkiVisitor<? extends T>)visitor).visitAddsub(this);
 			else return visitor.visitChildren(this);
@@ -663,14 +561,6 @@ public class BukkiParser extends Parser {
 			return getRuleContext(ExprContext.class,i);
 		}
 		public LeContext(ExprContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof BukkiListener ) ((BukkiListener)listener).enterLe(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof BukkiListener ) ((BukkiListener)listener).exitLe(this);
-		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof BukkiVisitor ) return ((BukkiVisitor<? extends T>)visitor).visitLe(this);
@@ -687,14 +577,6 @@ public class BukkiParser extends Parser {
 		}
 		public MuldivContext(ExprContext ctx) { copyFrom(ctx); }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof BukkiListener ) ((BukkiListener)listener).enterMuldiv(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof BukkiListener ) ((BukkiListener)listener).exitMuldiv(this);
-		}
-		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof BukkiVisitor ) return ((BukkiVisitor<? extends T>)visitor).visitMuldiv(this);
 			else return visitor.visitChildren(this);
@@ -708,14 +590,6 @@ public class BukkiParser extends Parser {
 			return getRuleContext(ExprContext.class,i);
 		}
 		public GeContext(ExprContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof BukkiListener ) ((BukkiListener)listener).enterGe(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof BukkiListener ) ((BukkiListener)listener).exitGe(this);
-		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof BukkiVisitor ) return ((BukkiVisitor<? extends T>)visitor).visitGe(this);
@@ -731,14 +605,6 @@ public class BukkiParser extends Parser {
 		}
 		public GtContext(ExprContext ctx) { copyFrom(ctx); }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof BukkiListener ) ((BukkiListener)listener).enterGt(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof BukkiListener ) ((BukkiListener)listener).exitGt(this);
-		}
-		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof BukkiVisitor ) return ((BukkiVisitor<? extends T>)visitor).visitGt(this);
 			else return visitor.visitChildren(this);
@@ -753,14 +619,6 @@ public class BukkiParser extends Parser {
 		}
 		public EqualContext(ExprContext ctx) { copyFrom(ctx); }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof BukkiListener ) ((BukkiListener)listener).enterEqual(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof BukkiListener ) ((BukkiListener)listener).exitEqual(this);
-		}
-		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof BukkiVisitor ) return ((BukkiVisitor<? extends T>)visitor).visitEqual(this);
 			else return visitor.visitChildren(this);
@@ -771,14 +629,6 @@ public class BukkiParser extends Parser {
 			return getRuleContext(ExprContext.class,0);
 		}
 		public ParensContext(ExprContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof BukkiListener ) ((BukkiListener)listener).enterParens(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof BukkiListener ) ((BukkiListener)listener).exitParens(this);
-		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof BukkiVisitor ) return ((BukkiVisitor<? extends T>)visitor).visitParens(this);
@@ -794,14 +644,6 @@ public class BukkiParser extends Parser {
 		}
 		public LtContext(ExprContext ctx) { copyFrom(ctx); }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof BukkiListener ) ((BukkiListener)listener).enterLt(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof BukkiListener ) ((BukkiListener)listener).exitLt(this);
-		}
-		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof BukkiVisitor ) return ((BukkiVisitor<? extends T>)visitor).visitLt(this);
 			else return visitor.visitChildren(this);
@@ -812,14 +654,6 @@ public class BukkiParser extends Parser {
 			return getRuleContext(ParamContext.class,0);
 		}
 		public FuncparamContext(ExprContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof BukkiListener ) ((BukkiListener)listener).enterFuncparam(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof BukkiListener ) ((BukkiListener)listener).exitFuncparam(this);
-		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof BukkiVisitor ) return ((BukkiVisitor<? extends T>)visitor).visitFuncparam(this);
@@ -843,7 +677,7 @@ public class BukkiParser extends Parser {
 			int _alt;
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(85);
+			setState(89);
 			switch (_input.LA(1)) {
 			case T__0:
 				{
@@ -851,8 +685,8 @@ public class BukkiParser extends Parser {
 				_ctx = _localctx;
 				_prevctx = _localctx;
 
-				setState(78); match(T__0);
-				setState(79); expr(3);
+				setState(82); match(T__0);
+				setState(83); expr(3);
 				}
 				break;
 			case T__14:
@@ -860,9 +694,9 @@ public class BukkiParser extends Parser {
 				_localctx = new ParensContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
-				setState(80); match(T__14);
-				setState(81); expr(0);
-				setState(82); match(T__15);
+				setState(84); match(T__14);
+				setState(85); expr(0);
+				setState(86); match(T__15);
 				}
 				break;
 			case ID:
@@ -873,111 +707,111 @@ public class BukkiParser extends Parser {
 				_localctx = new FuncparamContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
-				setState(84); param();
+				setState(88); param();
 				}
 				break;
 			default:
 				throw new NoViableAltException(this);
 			}
 			_ctx.stop = _input.LT(-1);
-			setState(110);
+			setState(114);
 			_errHandler.sync(this);
-			_alt = getInterpreter().adaptivePredict(_input,7,_ctx);
+			_alt = getInterpreter().adaptivePredict(_input,8,_ctx);
 			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					if ( _parseListeners!=null ) triggerExitRuleEvent();
 					_prevctx = _localctx;
 					{
-					setState(108);
-					switch ( getInterpreter().adaptivePredict(_input,6,_ctx) ) {
+					setState(112);
+					switch ( getInterpreter().adaptivePredict(_input,7,_ctx) ) {
 					case 1:
 						{
 						_localctx = new MuldivContext(new ExprContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_expr);
-						setState(87);
+						setState(91);
 						if (!(precpred(_ctx, 10))) throw new FailedPredicateException(this, "precpred(_ctx, 10)");
-						setState(88);
+						setState(92);
 						((MuldivContext)_localctx).op = _input.LT(1);
 						_la = _input.LA(1);
 						if ( !(_la==MUL || _la==DIV) ) {
 							((MuldivContext)_localctx).op = (Token)_errHandler.recoverInline(this);
 						}
 						consume();
-						setState(89); expr(11);
+						setState(93); expr(11);
 						}
 						break;
 					case 2:
 						{
 						_localctx = new AddsubContext(new ExprContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_expr);
-						setState(90);
+						setState(94);
 						if (!(precpred(_ctx, 9))) throw new FailedPredicateException(this, "precpred(_ctx, 9)");
-						setState(91);
+						setState(95);
 						((AddsubContext)_localctx).op = _input.LT(1);
 						_la = _input.LA(1);
 						if ( !(_la==ADD || _la==SUB) ) {
 							((AddsubContext)_localctx).op = (Token)_errHandler.recoverInline(this);
 						}
 						consume();
-						setState(92); expr(10);
+						setState(96); expr(10);
 						}
 						break;
 					case 3:
 						{
 						_localctx = new EqualContext(new ExprContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_expr);
-						setState(93);
+						setState(97);
 						if (!(precpred(_ctx, 8))) throw new FailedPredicateException(this, "precpred(_ctx, 8)");
-						setState(94); match(T__3);
-						setState(95); expr(9);
+						setState(98); match(T__3);
+						setState(99); expr(9);
 						}
 						break;
 					case 4:
 						{
 						_localctx = new GtContext(new ExprContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_expr);
-						setState(96);
+						setState(100);
 						if (!(precpred(_ctx, 7))) throw new FailedPredicateException(this, "precpred(_ctx, 7)");
-						setState(97); match(T__5);
-						setState(98); expr(8);
+						setState(101); match(T__5);
+						setState(102); expr(8);
 						}
 						break;
 					case 5:
 						{
 						_localctx = new GeContext(new ExprContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_expr);
-						setState(99);
+						setState(103);
 						if (!(precpred(_ctx, 6))) throw new FailedPredicateException(this, "precpred(_ctx, 6)");
-						setState(100); match(T__1);
-						setState(101); expr(7);
+						setState(104); match(T__1);
+						setState(105); expr(7);
 						}
 						break;
 					case 6:
 						{
 						_localctx = new LtContext(new ExprContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_expr);
-						setState(102);
+						setState(106);
 						if (!(precpred(_ctx, 5))) throw new FailedPredicateException(this, "precpred(_ctx, 5)");
-						setState(103); match(T__11);
-						setState(104); expr(6);
+						setState(107); match(T__11);
+						setState(108); expr(6);
 						}
 						break;
 					case 7:
 						{
 						_localctx = new LeContext(new ExprContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_expr);
-						setState(105);
+						setState(109);
 						if (!(precpred(_ctx, 4))) throw new FailedPredicateException(this, "precpred(_ctx, 4)");
-						setState(106); match(T__8);
-						setState(107); expr(5);
+						setState(110); match(T__8);
+						setState(111); expr(5);
 						}
 						break;
 					}
 					} 
 				}
-				setState(112);
+				setState(116);
 				_errHandler.sync(this);
-				_alt = getInterpreter().adaptivePredict(_input,7,_ctx);
+				_alt = getInterpreter().adaptivePredict(_input,8,_ctx);
 			}
 			}
 		}
@@ -1007,14 +841,6 @@ public class BukkiParser extends Parser {
 		public TerminalNode ID() { return getToken(BukkiParser.ID, 0); }
 		public IdContext(ParamContext ctx) { copyFrom(ctx); }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof BukkiListener ) ((BukkiListener)listener).enterId(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof BukkiListener ) ((BukkiListener)listener).exitId(this);
-		}
-		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof BukkiVisitor ) return ((BukkiVisitor<? extends T>)visitor).visitId(this);
 			else return visitor.visitChildren(this);
@@ -1023,14 +849,6 @@ public class BukkiParser extends Parser {
 	public static class IntContext extends ParamContext {
 		public TerminalNode INT() { return getToken(BukkiParser.INT, 0); }
 		public IntContext(ParamContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof BukkiListener ) ((BukkiListener)listener).enterInt(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof BukkiListener ) ((BukkiListener)listener).exitInt(this);
-		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof BukkiVisitor ) return ((BukkiVisitor<? extends T>)visitor).visitInt(this);
@@ -1041,14 +859,6 @@ public class BukkiParser extends Parser {
 		public TerminalNode BOOLEAN() { return getToken(BukkiParser.BOOLEAN, 0); }
 		public BoolContext(ParamContext ctx) { copyFrom(ctx); }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof BukkiListener ) ((BukkiListener)listener).enterBool(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof BukkiListener ) ((BukkiListener)listener).exitBool(this);
-		}
-		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof BukkiVisitor ) return ((BukkiVisitor<? extends T>)visitor).visitBool(this);
 			else return visitor.visitChildren(this);
@@ -1057,14 +867,6 @@ public class BukkiParser extends Parser {
 	public static class FloatContext extends ParamContext {
 		public TerminalNode FLOAT() { return getToken(BukkiParser.FLOAT, 0); }
 		public FloatContext(ParamContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof BukkiListener ) ((BukkiListener)listener).enterFloat(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof BukkiListener ) ((BukkiListener)listener).exitFloat(this);
-		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof BukkiVisitor ) return ((BukkiVisitor<? extends T>)visitor).visitFloat(this);
@@ -1076,34 +878,34 @@ public class BukkiParser extends Parser {
 		ParamContext _localctx = new ParamContext(_ctx, getState());
 		enterRule(_localctx, 18, RULE_param);
 		try {
-			setState(117);
+			setState(121);
 			switch (_input.LA(1)) {
 			case INT:
 				_localctx = new IntContext(_localctx);
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(113); match(INT);
+				setState(117); match(INT);
 				}
 				break;
 			case FLOAT:
 				_localctx = new FloatContext(_localctx);
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(114); match(FLOAT);
+				setState(118); match(FLOAT);
 				}
 				break;
 			case BOOLEAN:
 				_localctx = new BoolContext(_localctx);
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(115); match(BOOLEAN);
+				setState(119); match(BOOLEAN);
 				}
 				break;
 			case ID:
 				_localctx = new IdContext(_localctx);
 				enterOuterAlt(_localctx, 4);
 				{
-				setState(116); match(ID);
+				setState(120); match(ID);
 				}
 				break;
 			default:
@@ -1141,37 +943,38 @@ public class BukkiParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3\34z\4\2\t\2\4\3\t"+
+		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3\34~\4\2\t\2\4\3\t"+
 		"\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\4\13\t\13\3"+
 		"\2\6\2\30\n\2\r\2\16\2\31\3\3\3\3\7\3\36\n\3\f\3\16\3!\13\3\3\3\3\3\3"+
 		"\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\5\4\62\n\4\3\5\3\5"+
-		"\3\5\3\5\3\5\5\59\n\5\3\6\3\6\3\6\3\6\3\6\3\6\3\7\3\7\3\7\3\7\3\7\3\b"+
-		"\3\b\3\t\3\t\3\t\7\tK\n\t\f\t\16\tN\13\t\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3"+
-		"\n\5\nX\n\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3"+
-		"\n\3\n\3\n\3\n\3\n\3\n\3\n\7\no\n\n\f\n\16\nr\13\n\3\13\3\13\3\13\3\13"+
-		"\5\13x\n\13\3\13\2\3\22\f\2\4\6\b\n\f\16\20\22\24\2\4\3\2\27\30\3\2\31"+
-		"\32\u0083\2\27\3\2\2\2\4\33\3\2\2\2\6\61\3\2\2\2\b\63\3\2\2\2\n:\3\2\2"+
-		"\2\f@\3\2\2\2\16E\3\2\2\2\20G\3\2\2\2\22W\3\2\2\2\24w\3\2\2\2\26\30\5"+
-		"\6\4\2\27\26\3\2\2\2\30\31\3\2\2\2\31\27\3\2\2\2\31\32\3\2\2\2\32\3\3"+
-		"\2\2\2\33\37\7\f\2\2\34\36\5\6\4\2\35\34\3\2\2\2\36!\3\2\2\2\37\35\3\2"+
-		"\2\2\37 \3\2\2\2 \"\3\2\2\2!\37\3\2\2\2\"#\7\20\2\2#\5\3\2\2\2$\62\5\4"+
-		"\3\2%&\7\23\2\2&\'\7\b\2\2\'(\5\22\n\2()\7\t\2\2)\62\3\2\2\2*+\5\f\7\2"+
-		"+,\7\t\2\2,\62\3\2\2\2-\62\5\b\5\2./\5\n\6\2/\60\7\t\2\2\60\62\3\2\2\2"+
-		"\61$\3\2\2\2\61%\3\2\2\2\61*\3\2\2\2\61-\3\2\2\2\61.\3\2\2\2\62\7\3\2"+
-		"\2\2\63\64\7\6\2\2\64\65\5\22\n\2\658\5\6\4\2\66\67\7\16\2\2\679\5\6\4"+
-		"\28\66\3\2\2\289\3\2\2\29\t\3\2\2\2:;\5\22\n\2;<\7\13\2\2<=\5\22\n\2="+
-		">\7\5\2\2>?\5\22\n\2?\13\3\2\2\2@A\5\16\b\2AB\7\4\2\2BC\5\20\t\2CD\7\3"+
-		"\2\2D\r\3\2\2\2EF\7\23\2\2F\17\3\2\2\2GL\5\24\13\2HI\7\33\2\2IK\5\24\13"+
-		"\2JH\3\2\2\2KN\3\2\2\2LJ\3\2\2\2LM\3\2\2\2M\21\3\2\2\2NL\3\2\2\2OP\b\n"+
-		"\1\2PQ\7\22\2\2QX\5\22\n\5RS\7\4\2\2ST\5\22\n\2TU\7\3\2\2UX\3\2\2\2VX"+
-		"\5\24\13\2WO\3\2\2\2WR\3\2\2\2WV\3\2\2\2Xp\3\2\2\2YZ\f\f\2\2Z[\t\2\2\2"+
-		"[o\5\22\n\r\\]\f\13\2\2]^\t\3\2\2^o\5\22\n\f_`\f\n\2\2`a\7\17\2\2ao\5"+
-		"\22\n\13bc\f\t\2\2cd\7\r\2\2do\5\22\n\nef\f\b\2\2fg\7\21\2\2go\5\22\n"+
-		"\thi\f\7\2\2ij\7\7\2\2jo\5\22\n\bkl\f\6\2\2lm\7\n\2\2mo\5\22\n\7nY\3\2"+
-		"\2\2n\\\3\2\2\2n_\3\2\2\2nb\3\2\2\2ne\3\2\2\2nh\3\2\2\2nk\3\2\2\2or\3"+
-		"\2\2\2pn\3\2\2\2pq\3\2\2\2q\23\3\2\2\2rp\3\2\2\2sx\7\24\2\2tx\7\25\2\2"+
-		"ux\7\26\2\2vx\7\23\2\2ws\3\2\2\2wt\3\2\2\2wu\3\2\2\2wv\3\2\2\2x\25\3\2"+
-		"\2\2\13\31\37\618LWnpw";
+		"\3\5\3\5\3\5\5\59\n\5\3\6\3\6\3\6\3\6\3\6\3\6\3\7\3\7\5\7C\n\7\3\7\3\7"+
+		"\3\7\3\7\3\7\3\b\3\b\3\t\3\t\3\t\7\tO\n\t\f\t\16\tR\13\t\3\n\3\n\3\n\3"+
+		"\n\3\n\3\n\3\n\3\n\5\n\\\n\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3"+
+		"\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\7\ns\n\n\f\n\16\nv\13\n\3\13"+
+		"\3\13\3\13\3\13\5\13|\n\13\3\13\2\3\22\f\2\4\6\b\n\f\16\20\22\24\2\4\3"+
+		"\2\27\30\3\2\31\32\u0088\2\27\3\2\2\2\4\33\3\2\2\2\6\61\3\2\2\2\b\63\3"+
+		"\2\2\2\n:\3\2\2\2\fB\3\2\2\2\16I\3\2\2\2\20K\3\2\2\2\22[\3\2\2\2\24{\3"+
+		"\2\2\2\26\30\5\6\4\2\27\26\3\2\2\2\30\31\3\2\2\2\31\27\3\2\2\2\31\32\3"+
+		"\2\2\2\32\3\3\2\2\2\33\37\7\f\2\2\34\36\5\6\4\2\35\34\3\2\2\2\36!\3\2"+
+		"\2\2\37\35\3\2\2\2\37 \3\2\2\2 \"\3\2\2\2!\37\3\2\2\2\"#\7\20\2\2#\5\3"+
+		"\2\2\2$\62\5\4\3\2%&\7\23\2\2&\'\7\b\2\2\'(\5\22\n\2()\7\t\2\2)\62\3\2"+
+		"\2\2*+\5\f\7\2+,\7\t\2\2,\62\3\2\2\2-\62\5\b\5\2./\5\n\6\2/\60\7\t\2\2"+
+		"\60\62\3\2\2\2\61$\3\2\2\2\61%\3\2\2\2\61*\3\2\2\2\61-\3\2\2\2\61.\3\2"+
+		"\2\2\62\7\3\2\2\2\63\64\7\6\2\2\64\65\5\22\n\2\658\5\6\4\2\66\67\7\16"+
+		"\2\2\679\5\6\4\28\66\3\2\2\289\3\2\2\29\t\3\2\2\2:;\5\22\n\2;<\7\13\2"+
+		"\2<=\5\22\n\2=>\7\5\2\2>?\5\22\n\2?\13\3\2\2\2@A\7\23\2\2AC\7\b\2\2B@"+
+		"\3\2\2\2BC\3\2\2\2CD\3\2\2\2DE\5\16\b\2EF\7\4\2\2FG\5\20\t\2GH\7\3\2\2"+
+		"H\r\3\2\2\2IJ\7\23\2\2J\17\3\2\2\2KP\5\24\13\2LM\7\33\2\2MO\5\24\13\2"+
+		"NL\3\2\2\2OR\3\2\2\2PN\3\2\2\2PQ\3\2\2\2Q\21\3\2\2\2RP\3\2\2\2ST\b\n\1"+
+		"\2TU\7\22\2\2U\\\5\22\n\5VW\7\4\2\2WX\5\22\n\2XY\7\3\2\2Y\\\3\2\2\2Z\\"+
+		"\5\24\13\2[S\3\2\2\2[V\3\2\2\2[Z\3\2\2\2\\t\3\2\2\2]^\f\f\2\2^_\t\2\2"+
+		"\2_s\5\22\n\r`a\f\13\2\2ab\t\3\2\2bs\5\22\n\fcd\f\n\2\2de\7\17\2\2es\5"+
+		"\22\n\13fg\f\t\2\2gh\7\r\2\2hs\5\22\n\nij\f\b\2\2jk\7\21\2\2ks\5\22\n"+
+		"\tlm\f\7\2\2mn\7\7\2\2ns\5\22\n\bop\f\6\2\2pq\7\n\2\2qs\5\22\n\7r]\3\2"+
+		"\2\2r`\3\2\2\2rc\3\2\2\2rf\3\2\2\2ri\3\2\2\2rl\3\2\2\2ro\3\2\2\2sv\3\2"+
+		"\2\2tr\3\2\2\2tu\3\2\2\2u\23\3\2\2\2vt\3\2\2\2w|\7\24\2\2x|\7\25\2\2y"+
+		"|\7\26\2\2z|\7\23\2\2{w\3\2\2\2{x\3\2\2\2{y\3\2\2\2{z\3\2\2\2|\25\3\2"+
+		"\2\2\f\31\37\618BP[rt{";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {

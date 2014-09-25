@@ -10,6 +10,6 @@ import com.bubuwork.bukki.util.CalculationMemory;
  */
 public interface FunctionExecutor {
 
-	public void execute(CalculationMemory memory);
+	public Object execute(CalculationMemory memory);
 	
 }

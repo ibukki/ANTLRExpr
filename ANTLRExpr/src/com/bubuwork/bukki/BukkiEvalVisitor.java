@@ -8,17 +8,13 @@ import com.bubuwork.bukki.BukkiParser.AssignContext;
 import com.bubuwork.bukki.BukkiParser.BoolContext;
 import com.bubuwork.bukki.BukkiParser.CallfuncContext;
 import com.bubuwork.bukki.BukkiParser.CondContext;
-import com.bubuwork.bukki.BukkiParser.CondstatContext;
 import com.bubuwork.bukki.BukkiParser.EqualContext;
 import com.bubuwork.bukki.BukkiParser.FloatContext;
-import com.bubuwork.bukki.BukkiParser.FnameContext;
-import com.bubuwork.bukki.BukkiParser.FuncContext;
 import com.bubuwork.bukki.BukkiParser.FuncparamContext;
 import com.bubuwork.bukki.BukkiParser.GeContext;
 import com.bubuwork.bukki.BukkiParser.GtContext;
 import com.bubuwork.bukki.BukkiParser.IdContext;
 import com.bubuwork.bukki.BukkiParser.IfcondContext;
-import com.bubuwork.bukki.BukkiParser.IfstatContext;
 import com.bubuwork.bukki.BukkiParser.IntContext;
 import com.bubuwork.bukki.BukkiParser.LeContext;
 import com.bubuwork.bukki.BukkiParser.LtContext;
@@ -96,14 +92,6 @@ public class BukkiEvalVisitor extends BukkiBaseVisitor<Object>{
 	}
 
 	/* (non-Javadoc)
-	 * @see com.bubuwork.bukki.BukkiBaseVisitor#visitCond(com.bubuwork.bukki.BukkiParser.CondContext)
-	 */
-	@Override
-	public Object visitCond(CondContext ctx) {
-		return super.visitCond(ctx);
-	}
-
-	/* (non-Javadoc)
 	 * @see com.bubuwork.bukki.BukkiBaseVisitor#visitId(com.bubuwork.bukki.BukkiParser.IdContext)
 	 */
 	@Override
@@ -169,30 +157,46 @@ public class BukkiEvalVisitor extends BukkiBaseVisitor<Object>{
 	}
 
 	/* (non-Javadoc)
-	 * @see com.bubuwork.bukki.BukkiBaseVisitor#visitFunc(com.bubuwork.bukki.BukkiParser.FuncContext)
+	 * @see com.bubuwork.bukki.BukkiBaseVisitor#visitCallfunc(com.bubuwork.bukki.BukkiParser.CallfuncContext)
 	 */
 	@Override
-	public Object visitFunc(FuncContext ctx){
-		String functionName = ctx.fname().getText();
+	public Object visitCallfunc(CallfuncContext ctx) {
+		String variableName = null;
+		if(ctx.func().ID() != null){
+			variableName = ctx.func().ID().getText();
+		}
+		
+		String functionName = ctx.func().fname().getText();
+		System.out.println("Executing " + functionName);
 		FunctionExecutor executor = FunctionExecutorFactory.createExecutor(functionName);
 		if(executor != null){
-			List<ParamContext> paramList = ctx.params().param();
+			List<ParamContext> paramList = ctx.func().params().param();
 			for (ParamContext param : paramList) {
 				Object paramValue = visit(param);
 				System.out.println(paramValue);
-				executor.execute(memory);
+				Object result = executor.execute(memory);
+				if(variableName != null){
+					memory.addVariable(variableName, result);
+				}
 			}
 		}
 		return null;
 	}
 
 	/* (non-Javadoc)
-	 * @see com.bubuwork.bukki.BukkiBaseVisitor#visitIfstat(com.bubuwork.bukki.BukkiParser.IfstatContext)
+	 * @see com.bubuwork.bukki.BukkiBaseVisitor#visitIfcond(com.bubuwork.bukki.BukkiParser.IfcondContext)
+	 * 
+	 * if(xxx){
+	 *   xxx
+	 * }else{
+	 *   xxx
+	 * }
 	 */
+	
 	@Override
-	public Object visitIfstat(IfstatContext ctx) {
-		boolean ifPass = (Boolean) visit(ctx.expr());
-		List<StatContext> stats = ctx.stat();
+	public Object visitIfcond(IfcondContext ctx) {
+		boolean ifPass = (Boolean) visit(ctx.ifstat().expr());
+		List<StatContext> stats = ctx.ifstat().stat();
 		if(ifPass){
 			visit(stats.get(0));
 		}else{
@@ -202,34 +206,22 @@ public class BukkiEvalVisitor extends BukkiBaseVisitor<Object>{
 		}
 		return null;
 	}
-
-	/* (non-Javadoc)
-	 * @see com.bubuwork.bukki.BukkiBaseVisitor#visitFname(com.bubuwork.bukki.BukkiParser.FnameContext)
+	
+	/*
+	 * (non-Javadoc)
+	 * xxxx ? xxx: xxx
+	 * 
 	 */
 	@Override
-	public Object visitFname(FnameContext ctx) {
-		// TODO Auto-generated method stub
-		return super.visitFname(ctx);
+	public Object visitCond(CondContext ctx) { 
+		Boolean condExpr = (Boolean) visit(ctx.condstat().expr(0));
+		if(condExpr){
+			return visit(ctx.condstat().expr(1));
+		}else{
+			return visit(ctx.condstat().expr(2));
+		}
 	}
-
-	/* (non-Javadoc)
-	 * @see com.bubuwork.bukki.BukkiBaseVisitor#visitCallfunc(com.bubuwork.bukki.BukkiParser.CallfuncContext)
-	 */
-	@Override
-	public Object visitCallfunc(CallfuncContext ctx) {
-		// TODO Auto-generated method stub
-		return super.visitCallfunc(ctx);
-	}
-
-	/* (non-Javadoc)
-	 * @see com.bubuwork.bukki.BukkiBaseVisitor#visitIfcond(com.bubuwork.bukki.BukkiParser.IfcondContext)
-	 */
-	@Override
-	public Object visitIfcond(IfcondContext ctx) {
-		// TODO Auto-generated method stub
-		return super.visitIfcond(ctx);
-	}
-
+	
 	/* (non-Javadoc)
 	 * @see com.bubuwork.bukki.BukkiBaseVisitor#visitInt(com.bubuwork.bukki.BukkiParser.IntContext)
 	 */
@@ -243,8 +235,13 @@ public class BukkiEvalVisitor extends BukkiBaseVisitor<Object>{
 	 */
 	@Override
 	public Object visitEqual(EqualContext ctx) {
-		// TODO Auto-generated method stub
-		return super.visitEqual(ctx);
+		Object value1 = visit(ctx.expr(0));
+		Object value2 = visit(ctx.expr(1));
+		if(value1.equals(value2)){
+			return true;
+		}else{
+			return false;
+		}
 	}
 
 	/* (non-Javadoc)
@@ -264,14 +261,6 @@ public class BukkiEvalVisitor extends BukkiBaseVisitor<Object>{
 		return super.visitNot(ctx);
 	}
 
-	/* (non-Javadoc)
-	 * @see com.bubuwork.bukki.BukkiBaseVisitor#visitCondstat(com.bubuwork.bukki.BukkiParser.CondstatContext)
-	 */
-	@Override
-	public Object visitCondstat(CondstatContext ctx) {
-		// TODO Auto-generated method stub
-		return super.visitCondstat(ctx);
-	}
 
 	/* (non-Javadoc)
 	 * @see com.bubuwork.bukki.BukkiBaseVisitor#visitLe(com.bubuwork.bukki.BukkiParser.LeContext)

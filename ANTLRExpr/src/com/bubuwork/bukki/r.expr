@@ -1,16 +1,6 @@
-a = 100 ;
-b = 5 ;
-c = 6 ;
-add(a, b, c, d) ;
-if ( a > b){
-	if( b < c){
-		e = a * b ;
-	}
-	if(a < e){
-		g = 100;
-	}else { 
-		g = 200 + a ;
-    }
-}
-
-f = a + b * c ;
+BASIC = 5000;
+PERF = 1500;
+OT=100;
+OTHOUR=5;
+ADD(5,3,2);
+TOTALPAY = BASIC + PERF  + OT * OTHOUR ;
