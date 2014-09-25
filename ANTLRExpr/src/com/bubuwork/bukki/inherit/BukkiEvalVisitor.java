@@ -1,8 +1,10 @@
-package com.bubuwork.bukki;
+package com.bubuwork.bukki.inherit;
 
 
 import java.util.List;
 
+import com.bubuwork.bukki.BukkiBaseVisitor;
+import com.bubuwork.bukki.BukkiParser;
 import com.bubuwork.bukki.BukkiParser.AddsubContext;
 import com.bubuwork.bukki.BukkiParser.AssignContext;
 import com.bubuwork.bukki.BukkiParser.BoolContext;
@@ -167,7 +169,7 @@ public class BukkiEvalVisitor extends BukkiBaseVisitor<Object>{
 		}
 		
 		String functionName = ctx.func().fname().getText();
-		System.out.println("Executing " + functionName);
+		System.out.println("Executing method: " + functionName);
 		FunctionExecutor executor = FunctionExecutorFactory.createExecutor(functionName);
 		if(executor != null){
 			List<ParamContext> paramList = ctx.func().params().param();
@@ -257,8 +259,8 @@ public class BukkiEvalVisitor extends BukkiBaseVisitor<Object>{
 	 */
 	@Override
 	public Object visitNot(NotContext ctx) {
-		// TODO Auto-generated method stub
-		return super.visitNot(ctx);
+		Boolean value = (Boolean) visit(ctx.expr());
+		return !value;
 	}
 
 

@@ -10,9 +10,9 @@ import org.antlr.v4.runtime.ANTLRInputStream;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.ParseTree;
 
-import com.bubuwork.bukki.BukkiEvalVisitor;
 import com.bubuwork.bukki.BukkiLexer;
 import com.bubuwork.bukki.BukkiParser;
+import com.bubuwork.bukki.inherit.BukkiEvalVisitor;
 import com.bubuwork.bukki.util.CalculationMemory;
 
 public class Runner {
