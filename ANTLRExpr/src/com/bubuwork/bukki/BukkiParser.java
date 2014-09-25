@@ -21,11 +21,12 @@ public class BukkiParser extends Parser {
 		T__15=1, T__14=2, T__13=3, T__12=4, T__11=5, T__10=6, T__9=7, T__8=8, 
 		T__7=9, T__6=10, T__5=11, T__4=12, T__3=13, T__2=14, T__1=15, T__0=16, 
 		ID=17, INT=18, FLOAT=19, BOOLEAN=20, MUL=21, DIV=22, ADD=23, SUB=24, COMMA=25, 
-		WS=26;
+		AND=26, OR=27, WS=28;
 	public static final String[] tokenNames = {
 		"<INVALID>", "')'", "'('", "':'", "'if'", "'<'", "'='", "';'", "'<='", 
 		"'?'", "'{'", "'>'", "'else'", "'=='", "'}'", "'>='", "'!'", "ID", "INT", 
-		"FLOAT", "BOOLEAN", "'*'", "'/'", "'+'", "'-'", "','", "WS"
+		"FLOAT", "BOOLEAN", "'*'", "'/'", "'+'", "'-'", "','", "'&&'", "'||'", 
+		"WS"
 	};
 	public static final int
 		RULE_prog = 0, RULE_block = 1, RULE_stat = 2, RULE_ifstat = 3, RULE_condstat = 4, 
@@ -660,6 +661,21 @@ public class BukkiParser extends Parser {
 			else return visitor.visitChildren(this);
 		}
 	}
+	public static class AndorContext extends ExprContext {
+		public Token op;
+		public List<ExprContext> expr() {
+			return getRuleContexts(ExprContext.class);
+		}
+		public ExprContext expr(int i) {
+			return getRuleContext(ExprContext.class,i);
+		}
+		public AndorContext(ExprContext ctx) { copyFrom(ctx); }
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof BukkiVisitor ) return ((BukkiVisitor<? extends T>)visitor).visitAndor(this);
+			else return visitor.visitChildren(this);
+		}
+	}
 
 	public final ExprContext expr() throws RecognitionException {
 		return expr(0);
@@ -686,7 +702,7 @@ public class BukkiParser extends Parser {
 				_prevctx = _localctx;
 
 				setState(82); match(T__0);
-				setState(83); expr(3);
+				setState(83); expr(4);
 				}
 				break;
 			case T__14:
@@ -714,7 +730,7 @@ public class BukkiParser extends Parser {
 				throw new NoViableAltException(this);
 			}
 			_ctx.stop = _input.LT(-1);
-			setState(114);
+			setState(117);
 			_errHandler.sync(this);
 			_alt = getInterpreter().adaptivePredict(_input,8,_ctx);
 			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
@@ -722,14 +738,14 @@ public class BukkiParser extends Parser {
 					if ( _parseListeners!=null ) triggerExitRuleEvent();
 					_prevctx = _localctx;
 					{
-					setState(112);
+					setState(115);
 					switch ( getInterpreter().adaptivePredict(_input,7,_ctx) ) {
 					case 1:
 						{
 						_localctx = new MuldivContext(new ExprContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_expr);
 						setState(91);
-						if (!(precpred(_ctx, 10))) throw new FailedPredicateException(this, "precpred(_ctx, 10)");
+						if (!(precpred(_ctx, 11))) throw new FailedPredicateException(this, "precpred(_ctx, 11)");
 						setState(92);
 						((MuldivContext)_localctx).op = _input.LT(1);
 						_la = _input.LA(1);
@@ -737,7 +753,7 @@ public class BukkiParser extends Parser {
 							((MuldivContext)_localctx).op = (Token)_errHandler.recoverInline(this);
 						}
 						consume();
-						setState(93); expr(11);
+						setState(93); expr(12);
 						}
 						break;
 					case 2:
@@ -745,7 +761,7 @@ public class BukkiParser extends Parser {
 						_localctx = new AddsubContext(new ExprContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_expr);
 						setState(94);
-						if (!(precpred(_ctx, 9))) throw new FailedPredicateException(this, "precpred(_ctx, 9)");
+						if (!(precpred(_ctx, 10))) throw new FailedPredicateException(this, "precpred(_ctx, 10)");
 						setState(95);
 						((AddsubContext)_localctx).op = _input.LT(1);
 						_la = _input.LA(1);
@@ -753,7 +769,7 @@ public class BukkiParser extends Parser {
 							((AddsubContext)_localctx).op = (Token)_errHandler.recoverInline(this);
 						}
 						consume();
-						setState(96); expr(10);
+						setState(96); expr(11);
 						}
 						break;
 					case 3:
@@ -761,9 +777,9 @@ public class BukkiParser extends Parser {
 						_localctx = new EqualContext(new ExprContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_expr);
 						setState(97);
-						if (!(precpred(_ctx, 8))) throw new FailedPredicateException(this, "precpred(_ctx, 8)");
+						if (!(precpred(_ctx, 9))) throw new FailedPredicateException(this, "precpred(_ctx, 9)");
 						setState(98); match(T__3);
-						setState(99); expr(9);
+						setState(99); expr(10);
 						}
 						break;
 					case 4:
@@ -771,9 +787,9 @@ public class BukkiParser extends Parser {
 						_localctx = new GtContext(new ExprContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_expr);
 						setState(100);
-						if (!(precpred(_ctx, 7))) throw new FailedPredicateException(this, "precpred(_ctx, 7)");
+						if (!(precpred(_ctx, 8))) throw new FailedPredicateException(this, "precpred(_ctx, 8)");
 						setState(101); match(T__5);
-						setState(102); expr(8);
+						setState(102); expr(9);
 						}
 						break;
 					case 5:
@@ -781,9 +797,9 @@ public class BukkiParser extends Parser {
 						_localctx = new GeContext(new ExprContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_expr);
 						setState(103);
-						if (!(precpred(_ctx, 6))) throw new FailedPredicateException(this, "precpred(_ctx, 6)");
+						if (!(precpred(_ctx, 7))) throw new FailedPredicateException(this, "precpred(_ctx, 7)");
 						setState(104); match(T__1);
-						setState(105); expr(7);
+						setState(105); expr(8);
 						}
 						break;
 					case 6:
@@ -791,9 +807,9 @@ public class BukkiParser extends Parser {
 						_localctx = new LtContext(new ExprContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_expr);
 						setState(106);
-						if (!(precpred(_ctx, 5))) throw new FailedPredicateException(this, "precpred(_ctx, 5)");
+						if (!(precpred(_ctx, 6))) throw new FailedPredicateException(this, "precpred(_ctx, 6)");
 						setState(107); match(T__11);
-						setState(108); expr(6);
+						setState(108); expr(7);
 						}
 						break;
 					case 7:
@@ -801,15 +817,31 @@ public class BukkiParser extends Parser {
 						_localctx = new LeContext(new ExprContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_expr);
 						setState(109);
-						if (!(precpred(_ctx, 4))) throw new FailedPredicateException(this, "precpred(_ctx, 4)");
+						if (!(precpred(_ctx, 5))) throw new FailedPredicateException(this, "precpred(_ctx, 5)");
 						setState(110); match(T__8);
-						setState(111); expr(5);
+						setState(111); expr(6);
+						}
+						break;
+					case 8:
+						{
+						_localctx = new AndorContext(new ExprContext(_parentctx, _parentState));
+						pushNewRecursionContext(_localctx, _startState, RULE_expr);
+						setState(112);
+						if (!(precpred(_ctx, 3))) throw new FailedPredicateException(this, "precpred(_ctx, 3)");
+						setState(113);
+						((AndorContext)_localctx).op = _input.LT(1);
+						_la = _input.LA(1);
+						if ( !(_la==AND || _la==OR) ) {
+							((AndorContext)_localctx).op = (Token)_errHandler.recoverInline(this);
+						}
+						consume();
+						setState(114); expr(4);
 						}
 						break;
 					}
 					} 
 				}
-				setState(116);
+				setState(119);
 				_errHandler.sync(this);
 				_alt = getInterpreter().adaptivePredict(_input,8,_ctx);
 			}
@@ -878,34 +910,34 @@ public class BukkiParser extends Parser {
 		ParamContext _localctx = new ParamContext(_ctx, getState());
 		enterRule(_localctx, 18, RULE_param);
 		try {
-			setState(121);
+			setState(124);
 			switch (_input.LA(1)) {
 			case INT:
 				_localctx = new IntContext(_localctx);
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(117); match(INT);
+				setState(120); match(INT);
 				}
 				break;
 			case FLOAT:
 				_localctx = new FloatContext(_localctx);
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(118); match(FLOAT);
+				setState(121); match(FLOAT);
 				}
 				break;
 			case BOOLEAN:
 				_localctx = new BoolContext(_localctx);
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(119); match(BOOLEAN);
+				setState(122); match(BOOLEAN);
 				}
 				break;
 			case ID:
 				_localctx = new IdContext(_localctx);
 				enterOuterAlt(_localctx, 4);
 				{
-				setState(120); match(ID);
+				setState(123); match(ID);
 				}
 				break;
 			default:
@@ -931,50 +963,52 @@ public class BukkiParser extends Parser {
 	}
 	private boolean expr_sempred(ExprContext _localctx, int predIndex) {
 		switch (predIndex) {
-		case 0: return precpred(_ctx, 10);
-		case 1: return precpred(_ctx, 9);
-		case 2: return precpred(_ctx, 8);
-		case 3: return precpred(_ctx, 7);
-		case 4: return precpred(_ctx, 6);
-		case 5: return precpred(_ctx, 5);
-		case 6: return precpred(_ctx, 4);
+		case 0: return precpred(_ctx, 11);
+		case 1: return precpred(_ctx, 10);
+		case 2: return precpred(_ctx, 9);
+		case 3: return precpred(_ctx, 8);
+		case 4: return precpred(_ctx, 7);
+		case 5: return precpred(_ctx, 6);
+		case 6: return precpred(_ctx, 5);
+		case 7: return precpred(_ctx, 3);
 		}
 		return true;
 	}
 
 	public static final String _serializedATN =
-		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3\34~\4\2\t\2\4\3\t"+
-		"\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\4\13\t\13\3"+
-		"\2\6\2\30\n\2\r\2\16\2\31\3\3\3\3\7\3\36\n\3\f\3\16\3!\13\3\3\3\3\3\3"+
-		"\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\5\4\62\n\4\3\5\3\5"+
-		"\3\5\3\5\3\5\5\59\n\5\3\6\3\6\3\6\3\6\3\6\3\6\3\7\3\7\5\7C\n\7\3\7\3\7"+
-		"\3\7\3\7\3\7\3\b\3\b\3\t\3\t\3\t\7\tO\n\t\f\t\16\tR\13\t\3\n\3\n\3\n\3"+
-		"\n\3\n\3\n\3\n\3\n\5\n\\\n\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3"+
-		"\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\7\ns\n\n\f\n\16\nv\13\n\3\13"+
-		"\3\13\3\13\3\13\5\13|\n\13\3\13\2\3\22\f\2\4\6\b\n\f\16\20\22\24\2\4\3"+
-		"\2\27\30\3\2\31\32\u0088\2\27\3\2\2\2\4\33\3\2\2\2\6\61\3\2\2\2\b\63\3"+
-		"\2\2\2\n:\3\2\2\2\fB\3\2\2\2\16I\3\2\2\2\20K\3\2\2\2\22[\3\2\2\2\24{\3"+
-		"\2\2\2\26\30\5\6\4\2\27\26\3\2\2\2\30\31\3\2\2\2\31\27\3\2\2\2\31\32\3"+
-		"\2\2\2\32\3\3\2\2\2\33\37\7\f\2\2\34\36\5\6\4\2\35\34\3\2\2\2\36!\3\2"+
-		"\2\2\37\35\3\2\2\2\37 \3\2\2\2 \"\3\2\2\2!\37\3\2\2\2\"#\7\20\2\2#\5\3"+
-		"\2\2\2$\62\5\4\3\2%&\7\23\2\2&\'\7\b\2\2\'(\5\22\n\2()\7\t\2\2)\62\3\2"+
-		"\2\2*+\5\f\7\2+,\7\t\2\2,\62\3\2\2\2-\62\5\b\5\2./\5\n\6\2/\60\7\t\2\2"+
-		"\60\62\3\2\2\2\61$\3\2\2\2\61%\3\2\2\2\61*\3\2\2\2\61-\3\2\2\2\61.\3\2"+
-		"\2\2\62\7\3\2\2\2\63\64\7\6\2\2\64\65\5\22\n\2\658\5\6\4\2\66\67\7\16"+
-		"\2\2\679\5\6\4\28\66\3\2\2\289\3\2\2\29\t\3\2\2\2:;\5\22\n\2;<\7\13\2"+
-		"\2<=\5\22\n\2=>\7\5\2\2>?\5\22\n\2?\13\3\2\2\2@A\7\23\2\2AC\7\b\2\2B@"+
-		"\3\2\2\2BC\3\2\2\2CD\3\2\2\2DE\5\16\b\2EF\7\4\2\2FG\5\20\t\2GH\7\3\2\2"+
-		"H\r\3\2\2\2IJ\7\23\2\2J\17\3\2\2\2KP\5\24\13\2LM\7\33\2\2MO\5\24\13\2"+
-		"NL\3\2\2\2OR\3\2\2\2PN\3\2\2\2PQ\3\2\2\2Q\21\3\2\2\2RP\3\2\2\2ST\b\n\1"+
-		"\2TU\7\22\2\2U\\\5\22\n\5VW\7\4\2\2WX\5\22\n\2XY\7\3\2\2Y\\\3\2\2\2Z\\"+
-		"\5\24\13\2[S\3\2\2\2[V\3\2\2\2[Z\3\2\2\2\\t\3\2\2\2]^\f\f\2\2^_\t\2\2"+
-		"\2_s\5\22\n\r`a\f\13\2\2ab\t\3\2\2bs\5\22\n\fcd\f\n\2\2de\7\17\2\2es\5"+
-		"\22\n\13fg\f\t\2\2gh\7\r\2\2hs\5\22\n\nij\f\b\2\2jk\7\21\2\2ks\5\22\n"+
-		"\tlm\f\7\2\2mn\7\7\2\2ns\5\22\n\bop\f\6\2\2pq\7\n\2\2qs\5\22\n\7r]\3\2"+
-		"\2\2r`\3\2\2\2rc\3\2\2\2rf\3\2\2\2ri\3\2\2\2rl\3\2\2\2ro\3\2\2\2sv\3\2"+
-		"\2\2tr\3\2\2\2tu\3\2\2\2u\23\3\2\2\2vt\3\2\2\2w|\7\24\2\2x|\7\25\2\2y"+
-		"|\7\26\2\2z|\7\23\2\2{w\3\2\2\2{x\3\2\2\2{y\3\2\2\2{z\3\2\2\2|\25\3\2"+
-		"\2\2\f\31\37\618BP[rt{";
+		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3\36\u0081\4\2\t\2"+
+		"\4\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\4\13"+
+		"\t\13\3\2\6\2\30\n\2\r\2\16\2\31\3\3\3\3\7\3\36\n\3\f\3\16\3!\13\3\3\3"+
+		"\3\3\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\5\4\62\n\4\3"+
+		"\5\3\5\3\5\3\5\3\5\5\59\n\5\3\6\3\6\3\6\3\6\3\6\3\6\3\7\3\7\5\7C\n\7\3"+
+		"\7\3\7\3\7\3\7\3\7\3\b\3\b\3\t\3\t\3\t\7\tO\n\t\f\t\16\tR\13\t\3\n\3\n"+
+		"\3\n\3\n\3\n\3\n\3\n\3\n\5\n\\\n\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n"+
+		"\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\7\nv\n\n"+
+		"\f\n\16\ny\13\n\3\13\3\13\3\13\3\13\5\13\177\n\13\3\13\2\3\22\f\2\4\6"+
+		"\b\n\f\16\20\22\24\2\5\3\2\27\30\3\2\31\32\3\2\34\35\u008c\2\27\3\2\2"+
+		"\2\4\33\3\2\2\2\6\61\3\2\2\2\b\63\3\2\2\2\n:\3\2\2\2\fB\3\2\2\2\16I\3"+
+		"\2\2\2\20K\3\2\2\2\22[\3\2\2\2\24~\3\2\2\2\26\30\5\6\4\2\27\26\3\2\2\2"+
+		"\30\31\3\2\2\2\31\27\3\2\2\2\31\32\3\2\2\2\32\3\3\2\2\2\33\37\7\f\2\2"+
+		"\34\36\5\6\4\2\35\34\3\2\2\2\36!\3\2\2\2\37\35\3\2\2\2\37 \3\2\2\2 \""+
+		"\3\2\2\2!\37\3\2\2\2\"#\7\20\2\2#\5\3\2\2\2$\62\5\4\3\2%&\7\23\2\2&\'"+
+		"\7\b\2\2\'(\5\22\n\2()\7\t\2\2)\62\3\2\2\2*+\5\f\7\2+,\7\t\2\2,\62\3\2"+
+		"\2\2-\62\5\b\5\2./\5\n\6\2/\60\7\t\2\2\60\62\3\2\2\2\61$\3\2\2\2\61%\3"+
+		"\2\2\2\61*\3\2\2\2\61-\3\2\2\2\61.\3\2\2\2\62\7\3\2\2\2\63\64\7\6\2\2"+
+		"\64\65\5\22\n\2\658\5\6\4\2\66\67\7\16\2\2\679\5\6\4\28\66\3\2\2\289\3"+
+		"\2\2\29\t\3\2\2\2:;\5\22\n\2;<\7\13\2\2<=\5\22\n\2=>\7\5\2\2>?\5\22\n"+
+		"\2?\13\3\2\2\2@A\7\23\2\2AC\7\b\2\2B@\3\2\2\2BC\3\2\2\2CD\3\2\2\2DE\5"+
+		"\16\b\2EF\7\4\2\2FG\5\20\t\2GH\7\3\2\2H\r\3\2\2\2IJ\7\23\2\2J\17\3\2\2"+
+		"\2KP\5\24\13\2LM\7\33\2\2MO\5\24\13\2NL\3\2\2\2OR\3\2\2\2PN\3\2\2\2PQ"+
+		"\3\2\2\2Q\21\3\2\2\2RP\3\2\2\2ST\b\n\1\2TU\7\22\2\2U\\\5\22\n\6VW\7\4"+
+		"\2\2WX\5\22\n\2XY\7\3\2\2Y\\\3\2\2\2Z\\\5\24\13\2[S\3\2\2\2[V\3\2\2\2"+
+		"[Z\3\2\2\2\\w\3\2\2\2]^\f\r\2\2^_\t\2\2\2_v\5\22\n\16`a\f\f\2\2ab\t\3"+
+		"\2\2bv\5\22\n\rcd\f\13\2\2de\7\17\2\2ev\5\22\n\ffg\f\n\2\2gh\7\r\2\2h"+
+		"v\5\22\n\13ij\f\t\2\2jk\7\21\2\2kv\5\22\n\nlm\f\b\2\2mn\7\7\2\2nv\5\22"+
+		"\n\top\f\7\2\2pq\7\n\2\2qv\5\22\n\brs\f\5\2\2st\t\4\2\2tv\5\22\n\6u]\3"+
+		"\2\2\2u`\3\2\2\2uc\3\2\2\2uf\3\2\2\2ui\3\2\2\2ul\3\2\2\2uo\3\2\2\2ur\3"+
+		"\2\2\2vy\3\2\2\2wu\3\2\2\2wx\3\2\2\2x\23\3\2\2\2yw\3\2\2\2z\177\7\24\2"+
+		"\2{\177\7\25\2\2|\177\7\26\2\2}\177\7\23\2\2~z\3\2\2\2~{\3\2\2\2~|\3\2"+
+		"\2\2~}\3\2\2\2\177\25\3\2\2\2\f\31\37\618BP[uw~";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {

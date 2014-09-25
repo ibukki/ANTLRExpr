@@ -38,6 +38,7 @@ expr: expr op=('*'|'/') expr                           # muldiv
     | expr '<' expr                                    # lt
     | expr '<=' expr                                   # le
     | '!' expr                                         # not
+    | expr op=('&&'|'||') expr                         # andor
     | '(' expr ')'                                     # parens
     | param                                            # funcparam
     ;
@@ -68,5 +69,7 @@ DIV :   '/' ;
 ADD :   '+' ;
 SUB :   '-' ; 
 COMMA : ',' ;
+AND : '&&';
+OR  : '||';
 
 WS  :   [ \t\n\r]+ -> skip ;

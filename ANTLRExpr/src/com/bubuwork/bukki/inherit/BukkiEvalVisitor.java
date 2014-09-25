@@ -3,9 +3,13 @@ package com.bubuwork.bukki.inherit;
 
 import java.util.List;
 
+
+
+
 import com.bubuwork.bukki.BukkiBaseVisitor;
 import com.bubuwork.bukki.BukkiParser;
 import com.bubuwork.bukki.BukkiParser.AddsubContext;
+import com.bubuwork.bukki.BukkiParser.AndorContext;
 import com.bubuwork.bukki.BukkiParser.AssignContext;
 import com.bubuwork.bukki.BukkiParser.BoolContext;
 import com.bubuwork.bukki.BukkiParser.CallfuncContext;
@@ -245,7 +249,21 @@ public class BukkiEvalVisitor extends BukkiBaseVisitor<Object>{
 			return false;
 		}
 	}
-
+	
+	
+	public Object visitAndor(AndorContext ctx) { 
+		Boolean value1 = (Boolean) visit(ctx.expr(0));
+		Boolean value2 = (Boolean) visit(ctx.expr(1));
+		if ( ctx.op.getType() == BukkiParser.AND ){
+			return (value1 && value2);
+		}
+		if (ctx.op.getType() == BukkiParser.OR){
+			return (value1 || value2);
+		}
+		return null;
+	}
+	
+	
 	/* (non-Javadoc)
 	 * @see com.bubuwork.bukki.BukkiBaseVisitor#visitParens(com.bubuwork.bukki.BukkiParser.ParensContext)
 	 */

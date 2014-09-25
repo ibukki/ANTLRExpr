@@ -187,4 +187,11 @@ public interface BukkiVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitBool(@NotNull BukkiParser.BoolContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code andor}
+	 * labeled alternative in {@link BukkiParser#expr}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitAndor(@NotNull BukkiParser.AndorContext ctx);
 }

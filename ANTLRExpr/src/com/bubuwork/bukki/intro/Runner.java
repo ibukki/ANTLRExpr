@@ -37,6 +37,8 @@ public class Runner {
 				String key = (String) iterator.next();
 				System.out.println("key " + key + " value: " + memory.get(key));
 			}
+			
+			System.out.println("Total Pay is: " + memory.get("TOTALPAY"));
 		}
 		
 	}
