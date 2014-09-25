@@ -1,11 +1,7 @@
 package com.bubuwork.bukki.inherit;
 
-
+import java.util.ArrayList;
 import java.util.List;
-
-
-
-
 import com.bubuwork.bukki.BukkiBaseVisitor;
 import com.bubuwork.bukki.BukkiParser;
 import com.bubuwork.bukki.BukkiParser.AddsubContext;
@@ -55,26 +51,55 @@ public class BukkiEvalVisitor extends BukkiBaseVisitor<Object>{
 
 	/* (non-Javadoc)
 	 * @see com.bubuwork.bukki.BukkiBaseVisitor#visitGe(com.bubuwork.bukki.BukkiParser.GeContext)
+	 * Always use double value to compare
 	 */
 	@Override
 	public Object visitGe(GeContext ctx) {
-		Long value1 = (Long) visit(ctx.expr(0));
-		Long value2 = (Long) visit(ctx.expr(1));
-		if(value1 >= value2){
+		Object value1 = visit(ctx.expr(0));
+		Object value2 = visit(ctx.expr(1));
+		Double dValue1 = 0d;
+		Double dValue2 = 0d;
+		if(value1 instanceof Long){
+			dValue1 = 0d + (Long)value1;
+		}else if(value1 instanceof Double){
+			dValue1 = (Double)value1;
+		}
+		
+		if(value2 instanceof Long){
+			dValue2 = 0d + (Long)value2;
+		}else if(value2 instanceof Double){
+			dValue2 = (Double)value2;
+		}
+		
+		if(dValue1 >= dValue2){
 			return true;
 		}else{
 			return false;
 		}
 	}
-
+	
 	/* (non-Javadoc)
 	 * @see com.bubuwork.bukki.BukkiBaseVisitor#visitLt(com.bubuwork.bukki.BukkiParser.LtContext)
 	 */
 	@Override
 	public Object visitLt(LtContext ctx) {
-		Long value1 = (Long) visit(ctx.expr(0));
-		Long value2 = (Long) visit(ctx.expr(1));
-		if(value1 < value2){
+		Object value1 = visit(ctx.expr(0));
+		Object value2 = visit(ctx.expr(1));
+		Double dValue1 = 0d;
+		Double dValue2 = 0d;
+		if(value1 instanceof Long){
+			dValue1 = 0d + (Long)value1;
+		}else if(value1 instanceof Double){
+			dValue1 = (Double)value1;
+		}
+		
+		if(value2 instanceof Long){
+			dValue2 = 0d + (Long)value2;
+		}else if(value2 instanceof Double){
+			dValue2 = (Double)value2;
+		}
+		
+		if(dValue1 < dValue2){
 			return true;
 		}else{
 			return false;
@@ -177,13 +202,14 @@ public class BukkiEvalVisitor extends BukkiBaseVisitor<Object>{
 		FunctionExecutor executor = FunctionExecutorFactory.createExecutor(functionName);
 		if(executor != null){
 			List<ParamContext> paramList = ctx.func().params().param();
+			List paramValueList = new ArrayList();
 			for (ParamContext param : paramList) {
 				Object paramValue = visit(param);
-				System.out.println(paramValue);
-				Object result = executor.execute(memory);
-				if(variableName != null){
-					memory.addVariable(variableName, result);
-				}
+				paramValueList.add(paramValue);
+			}
+			Object result = executor.execute(paramValueList, memory);
+			if(variableName != null){
+				memory.addVariable(variableName, result);
 			}
 		}
 		return null;
@@ -204,7 +230,9 @@ public class BukkiEvalVisitor extends BukkiBaseVisitor<Object>{
 		boolean ifPass = (Boolean) visit(ctx.ifstat().expr());
 		List<StatContext> stats = ctx.ifstat().stat();
 		if(ifPass){
-			visit(stats.get(0));
+			if(stats.get(0) != null){
+				visit(stats.get(0));
+			}
 		}else{
 			if(stats.size() > 1){
 				visit(stats.get(1));
@@ -287,8 +315,27 @@ public class BukkiEvalVisitor extends BukkiBaseVisitor<Object>{
 	 */
 	@Override
 	public Object visitLe(LeContext ctx) {
-		// TODO Auto-generated method stub
-		return super.visitLe(ctx);
+		Object value1 = visit(ctx.expr(0));
+		Object value2 = visit(ctx.expr(1));
+		Double dValue1 = 0d;
+		Double dValue2 = 0d;
+		if(value1 instanceof Long){
+			dValue1 = 0d + (Long)value1;
+		}else if(value1 instanceof Double){
+			dValue1 = (Double)value1;
+		}
+		
+		if(value2 instanceof Long){
+			dValue2 = 0d + (Long)value2;
+		}else if(value2 instanceof Double){
+			dValue2 = (Double)value2;
+		}
+		
+		if(dValue1 <= dValue2){
+			return true;
+		}else{
+			return false;
+		}
 	}
 
 	/* (non-Javadoc)
@@ -296,9 +343,23 @@ public class BukkiEvalVisitor extends BukkiBaseVisitor<Object>{
 	 */
 	@Override
 	public Object visitGt(GtContext ctx) {
-		Long value1 = (Long) visit(ctx.expr(0));
-		Long value2 = (Long) visit(ctx.expr(1));
-		if(value1 > value2){
+		Object value1 = visit(ctx.expr(0));
+		Object value2 = visit(ctx.expr(1));
+		Double dValue1 = 0d;
+		Double dValue2 = 0d;
+		if(value1 instanceof Long){
+			dValue1 = 0d + (Long)value1;
+		}else if(value1 instanceof Double){
+			dValue1 = (Double)value1;
+		}
+		
+		if(value2 instanceof Long){
+			dValue2 = 0d + (Long)value2;
+		}else if(value2 instanceof Double){
+			dValue2 = (Double)value2;
+		}
+		
+		if(dValue1 > dValue2){
 			return true;
 		}else{
 			return false;

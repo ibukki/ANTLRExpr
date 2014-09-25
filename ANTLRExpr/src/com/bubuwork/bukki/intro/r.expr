@@ -4,7 +4,11 @@ OT=100;
 OTHOUR=5;
 AGE=30;
 ADDITION = 100;
+AGE = ADD(AGE,5);
 
+if(AGE >= 4.0001){
+	
+}
 if(AGE < 20 && 1 == 1 || (2 == 2 && 3 == 3)){
 	ADDITION = 500;
 	DEDUCTION = 300;

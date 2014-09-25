@@ -1,5 +1,7 @@
 package com.bubuwork.bukki.function;
 
+import java.util.List;
+
 import com.bubuwork.bukki.util.CalculationMemory;
 
 
@@ -10,6 +12,6 @@ import com.bubuwork.bukki.util.CalculationMemory;
  */
 public interface FunctionExecutor {
 
-	public Object execute(CalculationMemory memory);
+	public Object execute(List paramValueList, CalculationMemory memory);
 	
 }
