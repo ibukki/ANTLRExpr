@@ -1,7 +1,9 @@
 package com.bubuwork.bukki.inherit;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+
 import com.bubuwork.bukki.BukkiBaseVisitor;
 import com.bubuwork.bukki.BukkiParser;
 import com.bubuwork.bukki.BukkiParser.AddsubContext;
@@ -148,22 +150,55 @@ public class BukkiEvalVisitor extends BukkiBaseVisitor<Object>{
 	public Object visitMuldiv(MuldivContext ctx) {
 		Object left = visit(ctx.expr(0)); // get value of left subexpression
 		Object right = visit(ctx.expr(1)); // get value of right subexpression
-		if(left instanceof Long && right instanceof Long){
-			if ( ctx.op.getType() == BukkiParser.MUL ){
-				return (Long)left * (Long)right;
-			}else{
-				 return (Long)left / (Long)right;
-			}
-		}else if(left instanceof Double && right instanceof Double){
-			if ( ctx.op.getType() == BukkiParser.MUL ){
-				return (Double)left * (Double)right;
-			}else{
-				 return (Double)left / (Double)right;
-			}
+		Double dleft = 0d;
+		Double dright = 0d;
+		if(left instanceof Long){
+			dleft = 0d + (Long)left;
 		}
-		return null; // must be DIV
+		if(left instanceof Double){
+			dleft = (Double)left;
+		}
+		
+		if(right instanceof Long){
+			dright = 0d + (Long)right;
+		}
+		if(right instanceof Double){
+			dright = (Double)right;
+		}
+		
+		if(ctx.op.getType() == BukkiParser.MUL){
+			return dleft * dright;
+		}else{
+			if(dright == 0d){
+				return 0d;
+			}
+			return this.divide(dleft, dright, 3);
+		}
 	}
-
+	
+	
+	private double divide(double v1,double v2,int scale)
+	{
+	   if(scale<0)
+	   {
+	       throw new IllegalArgumentException("The scale must be a positive integer or zero");
+	   }
+	   BigDecimal b1 = new BigDecimal(Double.toString(v1));
+	   BigDecimal b2 = new BigDecimal(Double.toString(v2));
+	   return b1.divide(b2,scale,BigDecimal.ROUND_HALF_UP).doubleValue();
+	}  
+	
+	private double round(double v,int scale)
+	{
+	   if(scale<0)
+	   {
+	        throw new IllegalArgumentException( "The scale must be a positive integer or zero");
+	   }
+	   BigDecimal b = new BigDecimal(Double.toString(v));
+	   BigDecimal one = new BigDecimal("1");
+	   return b.divide(one,scale,BigDecimal.ROUND_HALF_UP).doubleValue();
+	}
+	
 	/* (non-Javadoc)
 	 * @see com.bubuwork.bukki.BukkiBaseVisitor#visitAddsub(com.bubuwork.bukki.BukkiParser.AddsubContext)
 	 */
@@ -171,20 +206,27 @@ public class BukkiEvalVisitor extends BukkiBaseVisitor<Object>{
 	public Object visitAddsub(AddsubContext ctx) {
 		Object left = visit(ctx.expr(0)); // get value of left subexpression
 		Object right = visit(ctx.expr(1)); // get value of right subexpression
-		if(left instanceof Long && right instanceof Long){
-			if ( ctx.op.getType() == BukkiParser.ADD ){
-				return (Long)left + (Long)right;
-			}else{
-				 return (Long)left - (Long)right;
-			}
-		}else if(left instanceof Double && right instanceof Double){
-			if ( ctx.op.getType() == BukkiParser.ADD ){
-				return (Double)left + (Double)right;
-			}else{
-				 return (Double)left - (Double)right;
-			}
+		Double dleft = 0d;
+		Double dright = 0d;
+		if(left instanceof Long){
+			dleft = 0d + (Long)left;
 		}
-		return null; // must be DIV
+		if(left instanceof Double){
+			dleft = (Double)left;
+		}
+		
+		if(right instanceof Long){
+			dright = 0d + (Long)right;
+		}
+		if(right instanceof Double){
+			dright = (Double)right;
+		}
+		
+		if ( ctx.op.getType() == BukkiParser.ADD ){
+			return dleft + dright;
+		}else{
+			 return dleft - dright;
+		}
 	}
 
 	/* (non-Javadoc)
