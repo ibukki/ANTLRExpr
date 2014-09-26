@@ -7,6 +7,8 @@ import com.bubuwork.bukki.util.CalculationMemory;
 
 public class FunctionSimpleAdd implements FunctionExecutor{
 	
+	public static String FUNCTION_NAME = "ADD";
+	
 	@Override
 	public Object execute(List paramList, CalculationMemory memory) {
 		Long result = 0L;
@@ -16,6 +18,11 @@ public class FunctionSimpleAdd implements FunctionExecutor{
 			}
 		}
 		return result;
+	}
+
+	@Override
+	public String getName() {
+		return FUNCTION_NAME;
 	}
 
 }

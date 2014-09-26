@@ -198,7 +198,6 @@ public class BukkiEvalVisitor extends BukkiBaseVisitor<Object>{
 		}
 		
 		String functionName = ctx.func().fname().getText();
-		System.out.println("Executing method: " + functionName);
 		FunctionExecutor executor = FunctionExecutorFactory.createExecutor(functionName);
 		if(executor != null){
 			List<ParamContext> paramList = ctx.func().params().param();
@@ -211,6 +210,8 @@ public class BukkiEvalVisitor extends BukkiBaseVisitor<Object>{
 			if(variableName != null){
 				memory.addVariable(variableName, result);
 			}
+		}else{
+			
 		}
 		return null;
 	}
