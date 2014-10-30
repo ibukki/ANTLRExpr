@@ -7,6 +7,8 @@ package com.bubuwork.bukki.function;
  */
 public @interface Function {
 	
-	String name();
+	public String name();
+	
+	public String[] params();
 	
 }
