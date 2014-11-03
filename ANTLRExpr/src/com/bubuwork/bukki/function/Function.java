@@ -11,4 +11,5 @@ public @interface Function {
 	
 	public String[] params();
 	
+	public String description();
 }
