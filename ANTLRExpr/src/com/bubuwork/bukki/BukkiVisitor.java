@@ -167,6 +167,13 @@ public interface BukkiVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitLe(@NotNull BukkiParser.LeContext ctx);
 	/**
+	 * Visit a parse tree produced by the {@code string}
+	 * labeled alternative in {@link BukkiParser#param}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitString(@NotNull BukkiParser.StringContext ctx);
+	/**
 	 * Visit a parse tree produced by the {@code codeblock}
 	 * labeled alternative in {@link BukkiParser#stat}.
 	 * @param ctx the parse tree

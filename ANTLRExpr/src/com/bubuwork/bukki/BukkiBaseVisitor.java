@@ -180,6 +180,13 @@ public class BukkiBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements 
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
+	@Override public T visitString(@NotNull BukkiParser.StringContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
 	@Override public T visitCodeblock(@NotNull BukkiParser.CodeblockContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
