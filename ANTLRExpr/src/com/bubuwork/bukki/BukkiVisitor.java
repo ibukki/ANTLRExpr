@@ -93,6 +93,13 @@ public interface BukkiVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitIfstat(@NotNull BukkiParser.IfstatContext ctx);
 	/**
+	 * Visit a parse tree produced by the {@code eqnoteq}
+	 * labeled alternative in {@link BukkiParser#expr}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitEqnoteq(@NotNull BukkiParser.EqnoteqContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link BukkiParser#fname}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
@@ -119,13 +126,6 @@ public interface BukkiVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitInt(@NotNull BukkiParser.IntContext ctx);
-	/**
-	 * Visit a parse tree produced by the {@code equal}
-	 * labeled alternative in {@link BukkiParser#expr}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitEqual(@NotNull BukkiParser.EqualContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code parens}
 	 * labeled alternative in {@link BukkiParser#expr}.

@@ -12,7 +12,7 @@ import com.bubuwork.bukki.BukkiParser.AssignContext;
 import com.bubuwork.bukki.BukkiParser.BoolContext;
 import com.bubuwork.bukki.BukkiParser.CallfuncContext;
 import com.bubuwork.bukki.BukkiParser.CondContext;
-import com.bubuwork.bukki.BukkiParser.EqualContext;
+import com.bubuwork.bukki.BukkiParser.EqnoteqContext;
 import com.bubuwork.bukki.BukkiParser.FloatContext;
 import com.bubuwork.bukki.BukkiParser.FuncparamContext;
 import com.bubuwork.bukki.BukkiParser.GeContext;
@@ -28,6 +28,7 @@ import com.bubuwork.bukki.BukkiParser.ParamContext;
 import com.bubuwork.bukki.BukkiParser.ParensContext;
 import com.bubuwork.bukki.BukkiParser.ProgContext;
 import com.bubuwork.bukki.BukkiParser.StatContext;
+import com.bubuwork.bukki.BukkiParser.StringContext;
 import com.bubuwork.bukki.function.FunctionExecutor;
 import com.bubuwork.bukki.function.FunctionExecutorFactory;
 import com.bubuwork.bukki.util.CalculationMemory;
@@ -123,7 +124,12 @@ public class BukkiEvalVisitor extends BukkiBaseVisitor<Object>{
 	public Object visitFloat(FloatContext ctx) {
 		return Double.parseDouble(ctx.FLOAT().getText());
 	}
-
+	
+	
+	public Object visitString(StringContext ctx) { 
+		return ctx.STRING().getText(); 
+	}
+	
 	/* (non-Javadoc)
 	 * @see com.bubuwork.bukki.BukkiBaseVisitor#visitId(com.bubuwork.bukki.BukkiParser.IdContext)
 	 */
@@ -311,14 +317,27 @@ public class BukkiEvalVisitor extends BukkiBaseVisitor<Object>{
 	 * @see com.bubuwork.bukki.BukkiBaseVisitor#visitEqual(com.bubuwork.bukki.BukkiParser.EqualContext)
 	 */
 	@Override
-	public Object visitEqual(EqualContext ctx) {
+	public Object visitEqnoteq(EqnoteqContext ctx) {
 		Object value1 = visit(ctx.expr(0));
 		Object value2 = visit(ctx.expr(1));
-		if(value1.equals(value2)){
-			return true;
-		}else{
-			return false;
+		if(ctx.op.getType() == BukkiParser.EQUAL){
+			if(value1.equals(value2)){
+				return true;
+			}else{
+				return false;
+			}
 		}
+		
+		if(ctx.op.getType() == BukkiParser.NOTEQUAL){
+			if(!value1.equals(value2)){
+				return true;
+			}else{
+				return false;
+			}
+		}
+		
+		return false;
+		
 	}
 	
 	

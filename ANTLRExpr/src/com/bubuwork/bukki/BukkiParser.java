@@ -18,15 +18,15 @@ public class BukkiParser extends Parser {
 	protected static final PredictionContextCache _sharedContextCache =
 		new PredictionContextCache();
 	public static final int
-		T__15=1, T__14=2, T__13=3, T__12=4, T__11=5, T__10=6, T__9=7, T__8=8, 
-		T__7=9, T__6=10, T__5=11, T__4=12, T__3=13, T__2=14, T__1=15, T__0=16, 
-		ID=17, STRING=18, INT=19, FLOAT=20, BOOLEAN=21, MUL=22, DIV=23, ADD=24, 
-		SUB=25, COMMA=26, AND=27, OR=28, Identifier=29, WS=30;
+		T__14=1, T__13=2, T__12=3, T__11=4, T__10=5, T__9=6, T__8=7, T__7=8, T__6=9, 
+		T__5=10, T__4=11, T__3=12, T__2=13, T__1=14, T__0=15, ID=16, STRING=17, 
+		INT=18, FLOAT=19, BOOLEAN=20, MUL=21, DIV=22, ADD=23, SUB=24, COMMA=25, 
+		AND=26, OR=27, EQUAL=28, NOTEQUAL=29, Identifier=30, WS=31;
 	public static final String[] tokenNames = {
 		"<INVALID>", "')'", "'('", "':'", "'if'", "'<'", "'='", "';'", "'<='", 
-		"'?'", "'{'", "'>'", "'else'", "'=='", "'}'", "'>='", "'!'", "ID", "STRING", 
-		"INT", "FLOAT", "BOOLEAN", "'*'", "'/'", "'+'", "'-'", "','", "'&&'", 
-		"'||'", "Identifier", "WS"
+		"'?'", "'{'", "'>'", "'else'", "'}'", "'>='", "'!'", "ID", "STRING", "INT", 
+		"FLOAT", "BOOLEAN", "'*'", "'/'", "'+'", "'-'", "','", "'&&'", "'||'", 
+		"'=='", "'!='", "Identifier", "WS"
 	};
 	public static final int
 		RULE_prog = 0, RULE_block = 1, RULE_stat = 2, RULE_ifstat = 3, RULE_condstat = 4, 
@@ -92,7 +92,7 @@ public class BukkiParser extends Parser {
 				setState(23); 
 				_errHandler.sync(this);
 				_la = _input.LA(1);
-			} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__14) | (1L << T__12) | (1L << T__6) | (1L << T__0) | (1L << ID) | (1L << STRING) | (1L << INT) | (1L << FLOAT) | (1L << BOOLEAN))) != 0) );
+			} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__13) | (1L << T__11) | (1L << T__5) | (1L << T__0) | (1L << ID) | (1L << STRING) | (1L << INT) | (1L << FLOAT) | (1L << BOOLEAN))) != 0) );
 			}
 		}
 		catch (RecognitionException re) {
@@ -131,11 +131,11 @@ public class BukkiParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(25); match(T__6);
+			setState(25); match(T__5);
 			setState(29);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__14) | (1L << T__12) | (1L << T__6) | (1L << T__0) | (1L << ID) | (1L << STRING) | (1L << INT) | (1L << FLOAT) | (1L << BOOLEAN))) != 0)) {
+			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__13) | (1L << T__11) | (1L << T__5) | (1L << T__0) | (1L << ID) | (1L << STRING) | (1L << INT) | (1L << FLOAT) | (1L << BOOLEAN))) != 0)) {
 				{
 				{
 				setState(26); stat();
@@ -245,9 +245,9 @@ public class BukkiParser extends Parser {
 				enterOuterAlt(_localctx, 2);
 				{
 				setState(35); match(ID);
-				setState(36); match(T__10);
+				setState(36); match(T__9);
 				setState(37); expr(0);
-				setState(38); match(T__9);
+				setState(38); match(T__8);
 				}
 				break;
 			case 3:
@@ -255,7 +255,7 @@ public class BukkiParser extends Parser {
 				enterOuterAlt(_localctx, 3);
 				{
 				setState(40); func();
-				setState(41); match(T__9);
+				setState(41); match(T__8);
 				}
 				break;
 			case 4:
@@ -270,7 +270,7 @@ public class BukkiParser extends Parser {
 				enterOuterAlt(_localctx, 5);
 				{
 				setState(44); condstat();
-				setState(45); match(T__9);
+				setState(45); match(T__8);
 				}
 				break;
 			}
@@ -313,14 +313,14 @@ public class BukkiParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(49); match(T__12);
+			setState(49); match(T__11);
 			setState(50); expr(0);
 			setState(51); stat();
 			setState(54);
 			switch ( getInterpreter().adaptivePredict(_input,3,_ctx) ) {
 			case 1:
 				{
-				setState(52); match(T__4);
+				setState(52); match(T__3);
 				setState(53); stat();
 				}
 				break;
@@ -363,9 +363,9 @@ public class BukkiParser extends Parser {
 			enterOuterAlt(_localctx, 1);
 			{
 			setState(56); expr(0);
-			setState(57); match(T__7);
+			setState(57); match(T__6);
 			setState(58); expr(0);
-			setState(59); match(T__13);
+			setState(59); match(T__12);
 			setState(60); expr(0);
 			}
 		}
@@ -410,14 +410,14 @@ public class BukkiParser extends Parser {
 			case 1:
 				{
 				setState(62); match(ID);
-				setState(63); match(T__10);
+				setState(63); match(T__9);
 				}
 				break;
 			}
 			setState(66); fname();
-			setState(67); match(T__14);
+			setState(67); match(T__13);
 			setState(68); params();
-			setState(69); match(T__15);
+			setState(69); match(T__14);
 			}
 		}
 		catch (RecognitionException re) {
@@ -611,20 +611,6 @@ public class BukkiParser extends Parser {
 			else return visitor.visitChildren(this);
 		}
 	}
-	public static class EqualContext extends ExprContext {
-		public List<ExprContext> expr() {
-			return getRuleContexts(ExprContext.class);
-		}
-		public ExprContext expr(int i) {
-			return getRuleContext(ExprContext.class,i);
-		}
-		public EqualContext(ExprContext ctx) { copyFrom(ctx); }
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof BukkiVisitor ) return ((BukkiVisitor<? extends T>)visitor).visitEqual(this);
-			else return visitor.visitChildren(this);
-		}
-	}
 	public static class ParensContext extends ExprContext {
 		public ExprContext expr() {
 			return getRuleContext(ExprContext.class,0);
@@ -647,6 +633,21 @@ public class BukkiParser extends Parser {
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof BukkiVisitor ) return ((BukkiVisitor<? extends T>)visitor).visitLt(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+	public static class EqnoteqContext extends ExprContext {
+		public Token op;
+		public List<ExprContext> expr() {
+			return getRuleContexts(ExprContext.class);
+		}
+		public ExprContext expr(int i) {
+			return getRuleContext(ExprContext.class,i);
+		}
+		public EqnoteqContext(ExprContext ctx) { copyFrom(ctx); }
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof BukkiVisitor ) return ((BukkiVisitor<? extends T>)visitor).visitEqnoteq(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -705,14 +706,14 @@ public class BukkiParser extends Parser {
 				setState(83); expr(4);
 				}
 				break;
-			case T__14:
+			case T__13:
 				{
 				_localctx = new ParensContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
-				setState(84); match(T__14);
+				setState(84); match(T__13);
 				setState(85); expr(0);
-				setState(86); match(T__15);
+				setState(86); match(T__14);
 				}
 				break;
 			case ID:
@@ -775,11 +776,17 @@ public class BukkiParser extends Parser {
 						break;
 					case 3:
 						{
-						_localctx = new EqualContext(new ExprContext(_parentctx, _parentState));
+						_localctx = new EqnoteqContext(new ExprContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_expr);
 						setState(97);
 						if (!(precpred(_ctx, 9))) throw new FailedPredicateException(this, "precpred(_ctx, 9)");
-						setState(98); match(T__3);
+						setState(98);
+						((EqnoteqContext)_localctx).op = _input.LT(1);
+						_la = _input.LA(1);
+						if ( !(_la==EQUAL || _la==NOTEQUAL) ) {
+							((EqnoteqContext)_localctx).op = (Token)_errHandler.recoverInline(this);
+						}
+						consume();
 						setState(99); expr(10);
 						}
 						break;
@@ -789,7 +796,7 @@ public class BukkiParser extends Parser {
 						pushNewRecursionContext(_localctx, _startState, RULE_expr);
 						setState(100);
 						if (!(precpred(_ctx, 8))) throw new FailedPredicateException(this, "precpred(_ctx, 8)");
-						setState(101); match(T__5);
+						setState(101); match(T__4);
 						setState(102); expr(9);
 						}
 						break;
@@ -809,7 +816,7 @@ public class BukkiParser extends Parser {
 						pushNewRecursionContext(_localctx, _startState, RULE_expr);
 						setState(106);
 						if (!(precpred(_ctx, 6))) throw new FailedPredicateException(this, "precpred(_ctx, 6)");
-						setState(107); match(T__11);
+						setState(107); match(T__10);
 						setState(108); expr(7);
 						}
 						break;
@@ -819,7 +826,7 @@ public class BukkiParser extends Parser {
 						pushNewRecursionContext(_localctx, _startState, RULE_expr);
 						setState(109);
 						if (!(precpred(_ctx, 5))) throw new FailedPredicateException(this, "precpred(_ctx, 5)");
-						setState(110); match(T__8);
+						setState(110); match(T__7);
 						setState(111); expr(6);
 						}
 						break;
@@ -993,7 +1000,7 @@ public class BukkiParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3 \u0082\4\2\t\2\4"+
+		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3!\u0082\4\2\t\2\4"+
 		"\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\4\13\t"+
 		"\13\3\2\6\2\30\n\2\r\2\16\2\31\3\3\3\3\7\3\36\n\3\f\3\16\3!\13\3\3\3\3"+
 		"\3\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\5\4\62\n\4\3\5"+
@@ -1002,31 +1009,31 @@ public class BukkiParser extends Parser {
 		"\n\3\n\3\n\3\n\3\n\3\n\5\n\\\n\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3"+
 		"\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\7\nv\n\n\f"+
 		"\n\16\ny\13\n\3\13\3\13\3\13\3\13\3\13\5\13\u0080\n\13\3\13\2\3\22\f\2"+
-		"\4\6\b\n\f\16\20\22\24\2\5\3\2\30\31\3\2\32\33\3\2\35\36\u008e\2\27\3"+
-		"\2\2\2\4\33\3\2\2\2\6\61\3\2\2\2\b\63\3\2\2\2\n:\3\2\2\2\fB\3\2\2\2\16"+
-		"I\3\2\2\2\20K\3\2\2\2\22[\3\2\2\2\24\177\3\2\2\2\26\30\5\6\4\2\27\26\3"+
-		"\2\2\2\30\31\3\2\2\2\31\27\3\2\2\2\31\32\3\2\2\2\32\3\3\2\2\2\33\37\7"+
-		"\f\2\2\34\36\5\6\4\2\35\34\3\2\2\2\36!\3\2\2\2\37\35\3\2\2\2\37 \3\2\2"+
-		"\2 \"\3\2\2\2!\37\3\2\2\2\"#\7\20\2\2#\5\3\2\2\2$\62\5\4\3\2%&\7\23\2"+
-		"\2&\'\7\b\2\2\'(\5\22\n\2()\7\t\2\2)\62\3\2\2\2*+\5\f\7\2+,\7\t\2\2,\62"+
-		"\3\2\2\2-\62\5\b\5\2./\5\n\6\2/\60\7\t\2\2\60\62\3\2\2\2\61$\3\2\2\2\61"+
-		"%\3\2\2\2\61*\3\2\2\2\61-\3\2\2\2\61.\3\2\2\2\62\7\3\2\2\2\63\64\7\6\2"+
-		"\2\64\65\5\22\n\2\658\5\6\4\2\66\67\7\16\2\2\679\5\6\4\28\66\3\2\2\28"+
-		"9\3\2\2\29\t\3\2\2\2:;\5\22\n\2;<\7\13\2\2<=\5\22\n\2=>\7\5\2\2>?\5\22"+
-		"\n\2?\13\3\2\2\2@A\7\23\2\2AC\7\b\2\2B@\3\2\2\2BC\3\2\2\2CD\3\2\2\2DE"+
-		"\5\16\b\2EF\7\4\2\2FG\5\20\t\2GH\7\3\2\2H\r\3\2\2\2IJ\7\23\2\2J\17\3\2"+
-		"\2\2KP\5\24\13\2LM\7\34\2\2MO\5\24\13\2NL\3\2\2\2OR\3\2\2\2PN\3\2\2\2"+
-		"PQ\3\2\2\2Q\21\3\2\2\2RP\3\2\2\2ST\b\n\1\2TU\7\22\2\2U\\\5\22\n\6VW\7"+
-		"\4\2\2WX\5\22\n\2XY\7\3\2\2Y\\\3\2\2\2Z\\\5\24\13\2[S\3\2\2\2[V\3\2\2"+
-		"\2[Z\3\2\2\2\\w\3\2\2\2]^\f\r\2\2^_\t\2\2\2_v\5\22\n\16`a\f\f\2\2ab\t"+
-		"\3\2\2bv\5\22\n\rcd\f\13\2\2de\7\17\2\2ev\5\22\n\ffg\f\n\2\2gh\7\r\2\2"+
-		"hv\5\22\n\13ij\f\t\2\2jk\7\21\2\2kv\5\22\n\nlm\f\b\2\2mn\7\7\2\2nv\5\22"+
-		"\n\top\f\7\2\2pq\7\n\2\2qv\5\22\n\brs\f\5\2\2st\t\4\2\2tv\5\22\n\6u]\3"+
-		"\2\2\2u`\3\2\2\2uc\3\2\2\2uf\3\2\2\2ui\3\2\2\2ul\3\2\2\2uo\3\2\2\2ur\3"+
-		"\2\2\2vy\3\2\2\2wu\3\2\2\2wx\3\2\2\2x\23\3\2\2\2yw\3\2\2\2z\u0080\7\25"+
-		"\2\2{\u0080\7\26\2\2|\u0080\7\27\2\2}\u0080\7\23\2\2~\u0080\7\24\2\2\177"+
-		"z\3\2\2\2\177{\3\2\2\2\177|\3\2\2\2\177}\3\2\2\2\177~\3\2\2\2\u0080\25"+
-		"\3\2\2\2\f\31\37\618BP[uw\177";
+		"\4\6\b\n\f\16\20\22\24\2\6\3\2\27\30\3\2\31\32\3\2\36\37\3\2\34\35\u008e"+
+		"\2\27\3\2\2\2\4\33\3\2\2\2\6\61\3\2\2\2\b\63\3\2\2\2\n:\3\2\2\2\fB\3\2"+
+		"\2\2\16I\3\2\2\2\20K\3\2\2\2\22[\3\2\2\2\24\177\3\2\2\2\26\30\5\6\4\2"+
+		"\27\26\3\2\2\2\30\31\3\2\2\2\31\27\3\2\2\2\31\32\3\2\2\2\32\3\3\2\2\2"+
+		"\33\37\7\f\2\2\34\36\5\6\4\2\35\34\3\2\2\2\36!\3\2\2\2\37\35\3\2\2\2\37"+
+		" \3\2\2\2 \"\3\2\2\2!\37\3\2\2\2\"#\7\17\2\2#\5\3\2\2\2$\62\5\4\3\2%&"+
+		"\7\22\2\2&\'\7\b\2\2\'(\5\22\n\2()\7\t\2\2)\62\3\2\2\2*+\5\f\7\2+,\7\t"+
+		"\2\2,\62\3\2\2\2-\62\5\b\5\2./\5\n\6\2/\60\7\t\2\2\60\62\3\2\2\2\61$\3"+
+		"\2\2\2\61%\3\2\2\2\61*\3\2\2\2\61-\3\2\2\2\61.\3\2\2\2\62\7\3\2\2\2\63"+
+		"\64\7\6\2\2\64\65\5\22\n\2\658\5\6\4\2\66\67\7\16\2\2\679\5\6\4\28\66"+
+		"\3\2\2\289\3\2\2\29\t\3\2\2\2:;\5\22\n\2;<\7\13\2\2<=\5\22\n\2=>\7\5\2"+
+		"\2>?\5\22\n\2?\13\3\2\2\2@A\7\22\2\2AC\7\b\2\2B@\3\2\2\2BC\3\2\2\2CD\3"+
+		"\2\2\2DE\5\16\b\2EF\7\4\2\2FG\5\20\t\2GH\7\3\2\2H\r\3\2\2\2IJ\7\22\2\2"+
+		"J\17\3\2\2\2KP\5\24\13\2LM\7\33\2\2MO\5\24\13\2NL\3\2\2\2OR\3\2\2\2PN"+
+		"\3\2\2\2PQ\3\2\2\2Q\21\3\2\2\2RP\3\2\2\2ST\b\n\1\2TU\7\21\2\2U\\\5\22"+
+		"\n\6VW\7\4\2\2WX\5\22\n\2XY\7\3\2\2Y\\\3\2\2\2Z\\\5\24\13\2[S\3\2\2\2"+
+		"[V\3\2\2\2[Z\3\2\2\2\\w\3\2\2\2]^\f\r\2\2^_\t\2\2\2_v\5\22\n\16`a\f\f"+
+		"\2\2ab\t\3\2\2bv\5\22\n\rcd\f\13\2\2de\t\4\2\2ev\5\22\n\ffg\f\n\2\2gh"+
+		"\7\r\2\2hv\5\22\n\13ij\f\t\2\2jk\7\20\2\2kv\5\22\n\nlm\f\b\2\2mn\7\7\2"+
+		"\2nv\5\22\n\top\f\7\2\2pq\7\n\2\2qv\5\22\n\brs\f\5\2\2st\t\5\2\2tv\5\22"+
+		"\n\6u]\3\2\2\2u`\3\2\2\2uc\3\2\2\2uf\3\2\2\2ui\3\2\2\2ul\3\2\2\2uo\3\2"+
+		"\2\2ur\3\2\2\2vy\3\2\2\2wu\3\2\2\2wx\3\2\2\2x\23\3\2\2\2yw\3\2\2\2z\u0080"+
+		"\7\24\2\2{\u0080\7\25\2\2|\u0080\7\26\2\2}\u0080\7\22\2\2~\u0080\7\23"+
+		"\2\2\177z\3\2\2\2\177{\3\2\2\2\177|\3\2\2\2\177}\3\2\2\2\177~\3\2\2\2"+
+		"\u0080\25\3\2\2\2\f\31\37\618BP[uw\177";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {

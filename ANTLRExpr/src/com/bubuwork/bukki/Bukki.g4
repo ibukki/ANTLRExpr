@@ -32,7 +32,7 @@ params: param (',' param)*
       
 expr: expr op=('*'|'/') expr                           # muldiv
     | expr op=('+'|'-') expr                           # addsub
-    | expr '==' expr                                   # equal
+    | expr op=('=='|'!=') expr                         # eqnoteq
     | expr '>' expr                                    # gt
     | expr '>=' expr                                   # ge 
     | expr '<' expr                                    # lt
@@ -76,6 +76,8 @@ SUB :   '-' ;
 COMMA : ',' ;
 AND : '&&';
 OR  : '||';
+EQUAL : '==';
+NOTEQUAL : '!=';
 
 fragment
 HexDigit : ('0'..'9'|'a'..'f'|'A'..'F') ;
