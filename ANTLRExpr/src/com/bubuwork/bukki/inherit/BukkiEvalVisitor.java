@@ -126,8 +126,12 @@ public class BukkiEvalVisitor extends BukkiBaseVisitor<Object>{
 	}
 	
 	
-	public Object visitString(StringContext ctx) { 
-		return ctx.STRING().getText(); 
+	public Object visitString(StringContext ctx) {
+		String value = ctx.STRING().getText();
+		if(value != null){
+			return value.replaceAll("\"", "");
+		}
+		return "";
 	}
 	
 	/* (non-Javadoc)
