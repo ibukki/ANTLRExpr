@@ -52,7 +52,7 @@ param: INT                                             # int
      
 ID  :   LETTER (LETTER | [0-9])* ;
 fragment
-LETTER : [a-zA-Z] ;
+LETTER : [a-zA-Z] | '_' ;
 
 STRING
     :  '"' ( EscapeSequence | ~('\\'|'"') )* '"'

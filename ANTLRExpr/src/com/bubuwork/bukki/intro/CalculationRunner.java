@@ -43,7 +43,7 @@ public class CalculationRunner {
 	
 	public static void main(String[] args) throws Exception {
 		CalculationRunner runner = new CalculationRunner();
-		String inputFile = "r.expr";
+		String inputFile = "t.expr";
 		Map result = runner.executeCalculation(inputFile);
 		System.out.println(result.get("TOTALPAY"));
 		
