@@ -17,6 +17,11 @@ import com.bubuwork.bukki.util.CalculationMemory;
 
 public class CalculationRunner {
 	
+	/**
+	 * memory
+	 */
+	private CalculationMemory memory = new CalculationMemory();
+	
 	public Map<String, Object> executeCalculation(String filePath) throws IOException{
 		InputStream is = CalculationRunner.class.getResourceAsStream(filePath);
 		return this.executeCalculation(is);
@@ -24,6 +29,10 @@ public class CalculationRunner {
 	
 	public void addFunctionImpl(FunctionExecutor executer){
 		FunctionExecutorFactory.registerFunction(executer);
+	}
+	
+	public void addGloabalVariable(String key, Object value){
+		this.memory.addVariable(key, value);
 	}
 	
 	public Map<String, Object> executeCalculation(InputStream is) throws IOException{
@@ -35,7 +44,7 @@ public class CalculationRunner {
 		CommonTokenStream tokens = new CommonTokenStream(lexer);
 		BukkiParser parser = new BukkiParser(tokens);
 		ParseTree tree = parser.prog();
-		BukkiEvalVisitor eval = new BukkiEvalVisitor(new CalculationMemory());
+		BukkiEvalVisitor eval = new BukkiEvalVisitor(memory);
 		eval.visit(tree);
 		
 		return eval.getMemory().memory();
