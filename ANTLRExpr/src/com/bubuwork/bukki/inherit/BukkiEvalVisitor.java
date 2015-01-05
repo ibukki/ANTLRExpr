@@ -25,6 +25,7 @@ import com.bubuwork.bukki.BukkiParser.LtContext;
 import com.bubuwork.bukki.BukkiParser.MuldivContext;
 import com.bubuwork.bukki.BukkiParser.NotContext;
 import com.bubuwork.bukki.BukkiParser.ParamContext;
+import com.bubuwork.bukki.BukkiParser.ParamsContext;
 import com.bubuwork.bukki.BukkiParser.ParensContext;
 import com.bubuwork.bukki.BukkiParser.ProgContext;
 import com.bubuwork.bukki.BukkiParser.StatContext;
@@ -252,11 +253,15 @@ public class BukkiEvalVisitor extends BukkiBaseVisitor<Object>{
 		String functionName = ctx.func().fname().getText();
 		FunctionExecutor executor = FunctionExecutorFactory.createExecutor(functionName);
 		if(executor != null){
-			List<ParamContext> paramList = ctx.func().params().param();
-			List paramValueList = new ArrayList();
-			for (ParamContext param : paramList) {
-				Object paramValue = visit(param);
-				paramValueList.add(paramValue);
+			ParamsContext params = ctx.func().params();
+			List paramValueList = null;
+			if(params != null){
+				List<ParamContext> paramList = ctx.func().params().param();
+				paramValueList = new ArrayList();
+				for (ParamContext param : paramList) {
+					Object paramValue = visit(param);
+					paramValueList.add(paramValue);
+				}
 			}
 			Object result = executor.execute(paramValueList, memory);
 			if(variableName != null){

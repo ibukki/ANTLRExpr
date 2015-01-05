@@ -21,7 +21,7 @@ ifstat: 'if' expr stat ('else' stat)?
 condstat: expr '?' expr ':' expr 
         ;
 
-func: (ID '=')? fname '(' params ')'
+func: (ID '=')? fname '(' params? ')'
     ;
 
 fname: ID

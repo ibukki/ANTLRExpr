@@ -54,7 +54,7 @@ public class CalculationRunner {
 		CalculationRunner runner = new CalculationRunner();
 		String inputFile = "t.expr";
 		Map result = runner.executeCalculation(inputFile);
-		System.out.println(result.get("TOTALPAY"));
+		System.out.println(result.get("RESULT"));
 		
 	}
 }
