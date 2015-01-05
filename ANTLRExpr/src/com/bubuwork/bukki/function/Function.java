@@ -15,7 +15,7 @@ public @interface Function {
 	
 	public String name();
 	
-	public FunctionParam[] params();
+	public FunctionParam[] params() default {};
 	
 	public String description();
 }
